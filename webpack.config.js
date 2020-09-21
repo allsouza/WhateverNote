@@ -1,6 +1,5 @@
 const path = require('path');
 
-// copy and paste!
 module.exports = {
   context: __dirname,
   entry: './frontend/whatever_note.jsx',
