@@ -1,0 +1,23 @@
+@font-face{
+    font-family: 'WhateverNote Title';
+    src: url(/app/assets/fonts/Domine-Bold.ttf);
+}
+
+.navbar{
+    display: block;
+
+    .page-logo {
+        padding: 20px;
+        display: flex;
+        align-items: baseline;
+
+        img{
+            width: 60px;
+        }
+
+        span {
+            font-size: 30px;
+            font-family: "WhateverNote Title";
+        }
+    }
+}
