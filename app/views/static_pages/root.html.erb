@@ -3,4 +3,7 @@
     window.currentUser = <%= render("api/users/user.json.jbuilder", user: current_user).html_safe%>
  </script>
  <% end %>
+ <script>
+   window.logo = <%= imageUrl("/assets/logo.png") %>
+ </script>
 <div id='root'>If you are seeing this React is not reacting</div>
