@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(window.currentUser){
         preloadedState = {
             session: {id: window.currentUser.id},
-            entities: {user:{[window.currentUser.id]:window.currentUser}}
+            entities: {users:{[window.currentUser.id]:window.currentUser}}
         }
         delete window.currentUser;
     }

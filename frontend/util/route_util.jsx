@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
-import { Route, Redirect, withRouter } from ("react-router-dom");
+import { Route, Redirect, withRouter } from "react-router-dom";
+import React from 'react';
 
 const mSTP = state => {
-    return Boolean(state.session.id)
+    return {loggedIn: Boolean(state.session.id)}
 }
 
 const Auth = ({component: Component, path, exact, loggedIn}) => {
-    return <Route path={path} exact={exact} render={props => !loggedIn ? <Component {...props}/> : <Redirect to='/'/>} />
+    return <Route path={path} exact={exact} render={props => !loggedIn ? <Component {...props}/> : <Redirect to='/app'/>} />
 }
 
 const Protected = ({component: Component, path, exact, loggedIn}) => {

@@ -10,6 +10,7 @@ export default class LoginForm extends React.Component{
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoAccount = this.demoAccount.bind(this);
     }
 
     handleChange(field){
@@ -18,23 +19,43 @@ export default class LoginForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.processForm(this.state)
+        this.props.login(this.state)
+    }
+
+    demoAccount(){
+        const dori = {
+            email:"dori@coralreef.au",
+            password: "iforgot"
+        }
+        this.props.login(dori);
     }
 
     render(){
         return(
-            <div>
-                <h1>Log in</h1>
-                <Link to='/auth/signup'>Sign up</Link>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Email:</label>
-                    <input type="text" onChange={this.handleChange('email')} value={this.state.email}/>
+            <div className="login-form">
+                <Link to='/'><div className="form-logo">
+                    <img src={window.logo} alt="WhateverNote"/>
+                    <h2>WhateverNote</h2>
+                    <p>Remember whatever you need.</p>
+                </div></Link>
 
-                    <label>Password:</label>
-                    <input type="password" onChange={this.handleChange('password')} value={this.state.password} />
+                <div className="demo">
+                    <button onClick={this.demoAccount}><i className="fas fa-user"></i>Demo Account</button>
+                    <p>or</p> 
+                </div>
+               
+
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" onChange={this.handleChange('email')} value={this.state.email} placeholder=" Email address"/>
+
+                    <input type="password" onChange={this.handleChange('password')} value={this.state.password} placeholder=" Password"/>
 
                     <button>Log in</button>
                 </form>
+                <div className="auth-options">
+                    <p>Don't have an account?</p>
+                    <Link to='/auth/signup'>Create account</Link>
+                </div>
             </div>
         )
     }

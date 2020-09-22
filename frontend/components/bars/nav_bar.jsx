@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavBar(){
+export default function NavBar({session, user, logout}){
+    let Auth;
+    if(Boolean(session.id)){
+        Auth=(<nav className="auth-links">
+            <p>Hello {user.first_name}, <button onClick={logout}>Logout</button></p>
+        </nav>
+        )
+    }
+    else{
+        Auth=(<nav className="auth-links">
+                <Link to="/auth/signup" >Sign Up</Link> or
+                <Link to="/auth/login"> Log in</Link>
+            </nav>)
+    }
+    
     return(
         <div className="navbar">
             <div className="page-limit">
@@ -17,10 +31,7 @@ export default function NavBar(){
                         </ul>
                     </nav>
                 </div>
-                <nav className="auth-links">
-                    <Link to="/auth/signup" >Sign Up</Link> or
-                    <Link to="/auth/login"> Log in</Link>
-                </nav>
+                {Auth}
             </div>
         </div>
     )

@@ -25,24 +25,27 @@ export default class SignupForm extends React.Component{
 
     render(){
         return(
-            <div>
-                <h1>Sign Up</h1>
-                <Link to='/auth/login'>Login</Link>
+            <div className="signup-form">
+                <Link to='/'><div className="form-logo">
+                    <img src={window.logo} alt="WhateverNote"/>
+                    <h2>WhateverNote</h2>
+                    <p>Remember whatever you need.</p>
+                </div></Link>
                 <form onSubmit={this.handleSubmit}>
-                    <label>First Name:</label>
-                    <input type="text" onChange={this.handleChange('first_name')} value={this.state.first_name}/>
+                    <input type="text" placeholder="First name" onChange={this.handleChange('first_name')} value={this.state.first_name}/>
 
-                    <label>Last Name:</label>
-                    <input type="text" onChange={this.handleChange('last_name')} value={this.state.last_name}/>
+                    <input type="text" placeholder="Last name" onChange={this.handleChange('last_name')} value={this.state.last_name}/>
 
-                    <label>Email:</label>
-                    <input type="text" onChange={this.handleChange('email')} value={this.state.email}/>
+                    <input type="text" placeholder="Email address" onChange={this.handleChange('email')} value={this.state.email}/>
 
-                    <label>Password:</label>
-                    <input type="password" onChange={this.handleChange('password')} value={this.state.password} />
+                    <input type="password" placeholder="Password" onChange={this.handleChange('password')} value={this.state.password} />
 
                     <button>Sign up</button>
                 </form>
+                <div className="auth-options">
+                    <p>Already have an account?</p>
+                    <Link to='/auth/login'>Log in</Link>
+                </div>
             </div>
         )
     }

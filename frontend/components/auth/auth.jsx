@@ -8,7 +8,8 @@ export default class Auth extends React.Component{
       
 
         return(
-            <div>
+            <div className="auth">
+                <img id="auth-background" src={window.authbackground} />
                 <Switch>
                     <Route exact path='/auth/login' component={LoginFormContainer} />
                     <Route exact path='/auth/signup' component={SignupFormContainer} />
