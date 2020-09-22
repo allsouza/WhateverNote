@@ -21,5 +21,138 @@
 @import "base/colors.scss";
 @import "base/fonts.scss";
 
-// Components
-@import "components/*";
+.splash{
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.navbar{
+    display: flex;
+    height: 80px;
+    width: 100%;
+    justify-content: space-between;
+
+    div {
+        display: flex;
+
+        .page-logo {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+    
+            img{
+                width: 60px;
+            }
+    
+            span {
+                font-size: 30px;
+                font-family: 'Playfair Display', serif;
+                font-style: bold;
+                color: black;
+                padding-left: 5px;
+            }
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+            ul{
+                display: flex;
+                flex-direction: row;
+                position: absolute;
+                top: 35px;
+
+                li{
+                    font-family: $title;
+                    font-weight: bold;
+                    font-size: 16px;
+                    padding-left: 40px;
+                }
+
+                a:hover{
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+    .auth-links{
+        font-family: $title;
+        position: absolute;
+        top: 33px;
+        right: 40px;
+        font-size: 12px;
+        a {
+            font-size: 16px;
+            font-weight: 500;
+            color: $blue;
+            padding: 0 8px;
+        }
+        a:hover{
+            color: $light-blue;
+        }
+    }
+}
+
+.splash-content{
+    .first{
+        display: flex;
+        height: 800px;
+        align-items: center;
+        background-color: $lightest-blue;
+        width: 100%;
+        font-family: $title;
+        align-items: flex-start;
+        position: relative;
+
+        img{
+            align-self: center;
+            width: 500px;
+            height: 600px;
+            background: transparent;
+            margin-left: 30px;
+        }
+        div{
+            background: transparent;
+        }
+    
+        h1{
+            background: transparent;
+            font-size: 60px;
+            padding: 10px 0;
+        }
+
+        #first-title{
+            padding-top: 130px;
+        }
+
+        #second-title{
+            padding-bottom: 20px;
+            padding-left: 100px;
+        }
+
+        #text{
+            text-align: center;
+            margin: 30px auto;
+            width: 400px;
+        }
+
+        #signup-button{
+            position: absolute;
+            padding: 20px 60px;
+            margin-top: 50px;
+            right: 18%;
+            background-color: $dark-blue;
+            color: white;
+            font-family: $title;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        #signup-button:hover{
+            background-color: $blue;
+        }
+    }
+}

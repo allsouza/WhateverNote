@@ -1,23 +1,66 @@
-@font-face{
-    font-family: 'WhateverNote Title';
-    src: url(/app/assets/fonts/Domine-Bold.ttf);
-}
+// .navbar{
+//     display: flex;
+//     height: 80px;
+//     justify-content: space-between;
 
-.navbar{
-    display: block;
+//     div {
+//         display: flex;
 
-    .page-logo {
-        padding: 20px;
-        display: flex;
-        align-items: baseline;
+//         .page-logo {
+//             padding: 20px;
+//             display: flex;
+//             align-items: center;
+    
+//             img{
+//                 width: 60px;
+//             }
+    
+//             span {
+//                 font-size: 30px;
+//                 font-family: 'Playfair Display', serif;
+//                 font-style: bold;
+//                 color: black;
+//                 padding-left: 5px;
+//             }
+//         }
 
-        img{
-            width: 60px;
-        }
+//         .links {
+//             display: flex;
+//             align-items: center;
+//             ul{
+//                 display: flex;
+//                 flex-direction: row;
+//                 position: absolute;
+//                 top: 35px;
 
-        span {
-            font-size: 30px;
-            font-family: "WhateverNote Title";
-        }
-    }
-}
+//                 li{
+//                     font-family: $title;
+//                     font-weight: bold;
+//                     font-size: 16px;
+//                     padding-left: 30px;
+//                 }
+
+//                 a:hover{
+//                     color: $blue;
+//                 }
+//             }
+//         }
+//     }
+
+//     .auth-links{
+//         font-family: $title;
+//         position: absolute;
+//         top: 35px;
+//         right: 40px;
+//         font-size: 12px;
+//         a {
+//             font-size: 16px;
+//             font-weight: 500;
+//             color: $blue;
+//             padding: 0 8px;
+//         }
+//         a:hover{
+//             color: $light-blue;
+//         }
+//     }
+// }

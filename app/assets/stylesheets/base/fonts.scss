@@ -1,9 +1,4 @@
-@font-face{
-    font-family: 'WhateverNote Title';
-    src: url(/app/assets/fonts/Domine-Bold.ttf);
-    font-family: 'WhateverNote body';
-    src: url(/app/assets/fonts/OpenSans-Regular.ttf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap');
 
-$title: "WhateverNote Title";
-$body: "WhateverNote body";
+$title: 'Lato', sans-serif;
+$body: 'Open Sans', sans-serif;
