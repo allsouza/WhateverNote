@@ -52,7 +52,7 @@
                 width: 300px;
                 padding: 10px;
                 border: 1px solid $lightest-blue;
-                border-radius: 5px;
+                border-radius: 3px;
                 margin-bottom: 10px;
                 font-family: $body;
                 font-size: 15px;
@@ -68,7 +68,7 @@
                 font-family: $title;
                 font-size: 17px;
                 font-weight: bold;
-                border-radius: 5px;
+                border-radius: 3px;
             }
 
             button:hover{
@@ -90,7 +90,7 @@
                 font-family: $title;
                 font-size: 17px;
                 font-weight: normal;
-                border-radius: 5px;
+                border-radius: 3px;
 
                 i{
                     color: $dark-blue;

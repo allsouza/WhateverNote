@@ -8,7 +8,6 @@ export default class SplashContent extends React.Component{
     }
 
     handleClick(e){
-        debugger
         this.props.history.push('/auth/signup')
     }
 
@@ -30,6 +29,28 @@ export default class SplashContent extends React.Component{
                 </div>
 
                 {/* will add more elements if I have more time later */}
+                <div className='second'>
+                    <div className='page-limit'>
+                        <h1>How It Works</h1>
+                        <ul>
+                            <li>
+                                <div><img src={window.logo} alt="logo"/></div>
+                                <h3>Sign Up</h3>
+                                <p>Create your account in one simple step.</p>
+                            </li>
+                            <li>
+                                <div><i className="fas fa-plus-square"></i></div>
+                                <h3>Add Content</h3>
+                                <p>Type your notes and save them to your notebooks.</p>
+                            </li>
+                            <li>
+                                <div><i className="fas fa-check-square"></i></div>
+                                <h3>Get Things Done</h3>
+                                <p>Now you can focus on getting things, instead of trying to remember what you needed to do.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -5,7 +5,7 @@
 
     .first .page-limit{
         display: flex;
-        height: 800px;
+        height: 700px;
         align-items: center;
         font-family: $title;
         align-items: flex-start;
@@ -54,11 +54,83 @@
             font-family: $title;
             font-size: 17px;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 3px;
         }
 
         #signup-button:hover{
             background-color: $blue;
+        }
+    }
+
+    .second{
+        background-color: rgb(238, 238, 238);
+        display: flex;
+        justify-content: center;
+    }
+
+    .second .page-limit{
+        height: 800px;
+        align-items: center;
+        font-family: $title;
+        align-items: flex-start;
+        background: transparent;
+        
+        h1, h3, ul, li, p{
+            background: transparent;
+            text-align: center;
+        }
+        
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        li{
+            width: 33%;
+            div{
+                width: 120px;
+                height: 120px;
+                box-shadow: 0 0 10px $gray;
+                border-radius: 50%;
+                background: rgb(245, 245, 245);
+                position: relative;
+                margin: auto;
+                img{
+                    position: absolute;
+                    top: 18px;
+                    left: 0px;
+                    width: 90px;
+                    padding: 15px;
+                    background: transparent;
+                }
+
+                i{
+                    position: absolute;
+                    top: 5px;
+                    left: 10px;
+                    font-size: 80px;
+                    padding: 15px;
+                    background: transparent;
+                    color: $dark-blue;
+                    text-align: center;
+                }
+            }
+        }
+
+        h1{
+            padding: 100px;
+            font-size: 75px;
+        }
+
+        h3{
+            font-size: 30px;
+        }
+
+        p{
+            max-width: 300px;
+            padding: 0 30px;
+            font-size: 20px;
         }
     }
 }

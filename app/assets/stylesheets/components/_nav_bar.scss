@@ -13,11 +13,11 @@
             align-items: center;
     
             img{
-                width: 60px;
+                width: 70px;
             }
     
             span {
-                font-size: 30px;
+                font-size: 35px;
                 font-family: 'Playfair Display', serif;
                 font-style: bold;
                 color: black;
@@ -28,6 +28,7 @@
         .links {
             display: flex;
             align-items: center;
+            padding-left: 20px;
             ul{
                 display: flex;
                 flex-direction: row;
