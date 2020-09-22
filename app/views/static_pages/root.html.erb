@@ -3,10 +3,5 @@
     window.currentUser = <%= render("api/users/user.json.jbuilder", user: current_user).html_safe%>
  </script>
  <% end %>
- <script>
-   window.logo = "<%= image_url("logo.png") %>"
-   window.splash1 = "<%= image_url("splash1.png")%>"
-   window.secondBackground = "<%= image_url("second-background.jpg")%>"
-   window.authbackground = "<%= image_url('auth-background.jpg')%>"
- </script>
+ <%= render "static_pages/images" %>
 <div id='root'>If you are seeing this React is not reacting</div>

@@ -21,7 +21,8 @@
 @import "base/colors.scss";
 @import "base/fonts.scss";
 
-@import "components/*";
+@import "auth_components/*";
+@import "app_components/*";
 
 h1, h2, h3{
     font-family: $title;
