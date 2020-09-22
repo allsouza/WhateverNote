@@ -16,6 +16,7 @@ export default class SplashContent extends React.Component{
         return(
             <div className="splash-content">
                 <div className="first">
+                <div className="page-limit">
                     <img src={window.splash1} alt="splash1"/>
                     <div className="first-right-col">
                         <div className="texts">
@@ -25,6 +26,7 @@ export default class SplashContent extends React.Component{
                         </div>
                         <Link id="signup-button" to='/auth/signup'>Sign up for free</Link>
                     </div>
+                </div>
                 </div>
 
                 {/* will add more elements if I have more time later */}

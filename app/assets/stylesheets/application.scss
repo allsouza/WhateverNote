@@ -22,12 +22,15 @@
 @import "base/fonts.scss";
 
 .splash{
-    max-width: 1300px;
-    margin: 0 auto;
+    // max-width: 1300px;
     position: relative;
 }
 
-.navbar{
+.page-limit{
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.navbar .page-limit{
     display: flex;
     height: 80px;
     width: 100%;
@@ -37,7 +40,7 @@
         display: flex;
 
         .page-logo {
-            padding: 20px;
+            padding: 15px;
             display: flex;
             align-items: center;
     
@@ -60,13 +63,11 @@
             ul{
                 display: flex;
                 flex-direction: row;
-                position: absolute;
-                top: 35px;
 
                 li{
                     font-family: $title;
                     font-weight: bold;
-                    font-size: 16px;
+                    font-size: 15px;
                     padding-left: 40px;
                 }
 
@@ -79,12 +80,12 @@
 
     .auth-links{
         font-family: $title;
-        position: absolute;
-        top: 33px;
-        right: 40px;
+        justify-self: flex-end;
+        align-self: center;
         font-size: 12px;
+        padding-right: 40px;
         a {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 500;
             color: $blue;
             padding: 0 8px;
@@ -97,14 +98,17 @@
 
 .splash-content{
     .first{
+        background-color: $lightest-blue;
+    }
+
+    .first .page-limit{
         display: flex;
         height: 800px;
         align-items: center;
-        background-color: $lightest-blue;
-        width: 100%;
         font-family: $title;
         align-items: flex-start;
         position: relative;
+        background: transparent;
 
         img{
             align-self: center;
