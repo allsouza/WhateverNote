@@ -11,6 +11,7 @@ export default class SignupForm extends React.Component{
             last_name: "",
             errors: []
         }
+        props.clearErrors();
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
