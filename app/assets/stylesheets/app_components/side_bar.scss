@@ -10,6 +10,7 @@
         display: flex;
         align-items: center;
         padding: 15px;
+        margin-bottom: 10px;
 
         img{
             width: 25px;
@@ -130,6 +131,57 @@
                     padding: 0;
                 }
             }
+        }
+    }
+
+    button{
+        margin: 0 17px;
+        margin-bottom: 10px;
+        padding: 8px;
+        font-family: $body;
+        border-radius: 20px;
+        width: 257px;
+        font-size: 15px;
+        color: white;
+        background-color: $blue;
+        font-weight: 500;
+
+        i{
+            color: white;
+            background: transparent;
+            padding-right: 7px;
+        }
+    }
+
+    button:hover {
+        background-color: $hover-blue;
+    }
+
+    .actions{
+        background: transparent;
+        li{
+            padding: 7px 20px;
+            font-size: 14px;
+            background-color: transparent;
+            color: $gray;
+            font-weight: 600;
+
+            i{
+                color: inherit;
+                background: transparent;
+                padding-right: 8px;
+            }
+        }
+
+        li:hover{
+            background-color: $hover-gray;
+            color: white;
+            cursor: pointer;
+        }
+
+        .action.selected{
+            background-color: $selected;
+            color: white;
         }
     }
 
