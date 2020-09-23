@@ -1,15 +1,15 @@
 import { connect } from "react-redux";
 import NotesIndex from './notes_index';
-import {fetchNotes} from '../../../actions/note_actions';
+import {fetchNote, fetchNotes} from '../../../actions/note_actions';
+import { withRouter } from "react-router-dom";
 
-const mSTP = state => {
-    // debugger
+const mSTP = (state) => {
     return({
     notes: Object.values(state.entities.notes),
 })}
 
 const mDTP = dispatch => ({
-    fetchNotes: () => dispatch(fetchNotes())
+    fetchNotes: () => dispatch(fetchNotes()),
 })
 
-export default connect(mSTP, mDTP)(NotesIndex);
+export default withRouter(connect(mSTP, mDTP)(NotesIndex));

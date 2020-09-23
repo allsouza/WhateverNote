@@ -13,7 +13,6 @@ export default function Root({store}){
                 <Route exact path='/' component={Splash} />
                 <AuthRoute path="/auth" component={Auth} /> 
                 <ProtectedRoute path='/app' component={App} />
-                <ProtectedRoute path='/app/notes' component={App}/>    
             </HashRouter>
         </Provider>
     )

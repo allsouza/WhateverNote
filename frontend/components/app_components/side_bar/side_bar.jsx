@@ -31,15 +31,14 @@ export default class Sidebar extends React.Component{
         this._redirect(e.currentTarget.id)
     }
     
-    _redirect(id){
-        debugger
-        switch (id) {
+    _redirect(component){
+        switch (component) {
             case "test":
                 this.props.history.push('/app/test')
                 break;
         
             default:
-                this.props.history.push('/app')
+                this.props.history.push('/app/notes')
                 break;
         }
     }
@@ -70,7 +69,7 @@ export default class Sidebar extends React.Component{
                 <button><i className="fas fa-plus"></i>New Note</button>
 
                 <ul className="actions">
-                    <li onClick={this._select} id="allNotes" className="action selected"><i className="fas fa-sticky-note"></i>All Notes</li>
+                    <li onClick={this._select} id="NotesIndex" className="action selected"><i className="fas fa-sticky-note"></i>All Notes</li>
                     <li onClick={this._select} id="test" className="action"><i className="fas fa-sticky-note"></i>another test</li>
                 </ul>
             </div>

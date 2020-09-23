@@ -1,3 +1,64 @@
 .notes-index{
     width: 330px;
+    background-color: $lightest-blue;
+    
+    h1, h3{
+        margin: 0;
+        color: $dark-gray;
+    }
+    p{
+        color: $text-gray;
+    }
+
+    .header{
+        background-color: transparent;
+        padding: 15px 25px;
+        font-family: $body;
+        border-bottom: 1px solid $light-gray;
+        h1{
+            background: inherit;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+        p{
+            margin-top: 25px;
+            background: inherit;
+            font-size: 13px;
+        }
+    }
+
+    ul{
+        background-color: transparent;
+        li{
+            height: 120px;
+            box-sizing: border-box;
+            padding: 15px 25px;
+            font-family: $body;
+            border-bottom: 1px solid $light-gray;
+            background-color: inherit;
+
+            h3{
+                font-size: 16px;
+                background: inherit;
+            }
+            .body{
+                padding: 5px 0;
+                font-size: 14px;
+                line-height: 1.4em;
+                max-height: 3em;
+                overflow: hidden;
+                background: inherit;
+            }
+            .date{
+                margin-top: 8px;
+                background: inherit;
+                font-size: 12px;
+            }
+        }
+
+        li:hover{
+            background-color: $white-blue;
+            cursor: pointer;
+        }
+    }
 }

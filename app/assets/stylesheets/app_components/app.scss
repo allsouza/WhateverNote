@@ -1,5 +1,9 @@
 .app{
     display: flex;
     height: 100vh;
-    width: 100vh;
+}
+
+.main-app{
+    display: flex;
+    flex-grow: 1;
 }

@@ -1,11 +1,14 @@
 import React from 'react';
+import { fetchNote } from '../../../util/notes_api_util';
 
-export default function NotesIndexItem({note}){
+export default function NotesIndexItem({note, openNote}){
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    const date = new Date(note.updated_at)
     return(
-        <li>
+        <li onClick={() => openNote(note.id)}>
             <h3>{note.title}</h3>
-            <p>{note.body}</p>
-            <p>{note.updated_at}</p>
+            <p className="body">{note.body}</p>
+            <p className="date">{`${months[date.getMonth()]} ${date.getDate()}`}</p>
         </li>
     )
 }
