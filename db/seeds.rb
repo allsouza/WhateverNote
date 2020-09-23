@@ -8,5 +8,5 @@
 User.destroy_all
 
 users = User.create([
-    {email:'dori@coralreef.au', password:"iforgot", first_name:"Dori", last_name:"...", user_icon: "dori"}
+    {email:'dori@coralreef.au', password:"iforgot", first_name:"Dori", last_name:"Tang", user_icon: "dori"}
 ])
