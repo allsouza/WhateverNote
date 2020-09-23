@@ -32,7 +32,12 @@ h1, h2, h3{
     position: relative;
 }
 
+button, a, li{
+    transition: background-color 0.75s;
+}
+
 .page-limit{
     max-width: 1300px;
     margin: 0 auto;
+    padding: 0 20px;
 }

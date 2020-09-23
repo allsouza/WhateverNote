@@ -6,20 +6,44 @@ export default class LoginForm extends React.Component{
         super(props);
         this.state = { 
             email: "",
-            password: ""
+            password: "",
+            errors: []
         }
+        this.appearEles = document.getElementsByClassName('appear');
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoAccount = this.demoAccount.bind(this);
     }
 
     handleChange(field){
-        return e => this.setState({[field]: e.target.value})
+        return e => {
+            if(field === 'email' && e.target.value === ""){
+                this._toggleActive();
+            }
+            this.setState({errors: []});
+            if(this.props.errors.session.length > 0) this.props.clearErrors();
+            this.setState({[field]: e.target.value})
+        }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.login(this.state)
+        if(document.getElementsByClassName('active')[0].innerText !== 'Continue'){
+            this.props.login(this.state)
+        }
+        else if(this.state.email !== "") {
+            this._toggleActive();
+        }
+        else {
+            this.setState({errors: ["This is a required field"]});
+        }
+    }
+
+    _toggleActive(){
+        Array.from(this.appearEles).forEach(ele => {
+            ele.classList.toggle('active');
+        })
     }
 
     demoAccount(){
@@ -33,11 +57,11 @@ export default class LoginForm extends React.Component{
     render(){
         return(
             <div className="login-form">
-                <Link to='/'><div className="form-logo">
+                <div className="form-logo"><Link to='/'>
                     <img src={window.logo} alt="WhateverNote"/>
                     <h2>WhateverNote</h2>
                     <p>Remember whatever you need.</p>
-                </div></Link>
+                </Link></div>
 
                 <div className="demo">
                     <button onClick={this.demoAccount}><i className="fas fa-user"></i>Demo Account</button>
@@ -46,11 +70,20 @@ export default class LoginForm extends React.Component{
                
 
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" onChange={this.handleChange('email')} value={this.state.email} placeholder=" Email address"/>
+                    <input id="email" type="text" onChange={this.handleChange('email')} value={this.state.email} placeholder=" Email address"/>
+                    
+                    <ul className="errors">
+                        {this.state.errors}
+                    </ul>
+                    <button className="appear active">Continue</button>
 
-                    <input type="password" onChange={this.handleChange('password')} value={this.state.password} placeholder=" Password"/>
-
-                    <button>Log in</button>
+                    <div className="appear">
+                        <input type="password" onChange={this.handleChange('password')} value={this.state.password} placeholder=" Password"/>
+                        <ul className="errors">
+                            {this.props.errors.session}
+                        </ul>
+                        <button>Log in</button>
+                    </div>
                 </form>
                 <div className="auth-options">
                     <p>Don't have an account?</p>

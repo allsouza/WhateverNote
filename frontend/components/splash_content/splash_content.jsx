@@ -16,15 +16,14 @@ export default class SplashContent extends React.Component{
             <div className="splash-content">
                 <div className="first">
                 <div className="page-limit">
-                    <img src={window.splash1} alt="splash1"/>
                     <div className="first-right-col">
                         <div className="texts">
-                            <h1 id="first-title">Whatever you're thinking</h1>
                             <h1 id="second-title">Write it down</h1>
                             <h3 id="text">WhateverNote is here to help you remember all your everyday bits of information, that might fall into forgetfullness</h3>
                         </div>
-                        <Link id="signup-button" to='/auth/signup'>Sign up for free</Link>
+                        <div id="signup-button"><Link  to='/auth/signup'>Sign up for free</Link></div>
                     </div>
+                    <img src={window.splash1} alt="splash1"/>
                 </div>
                 </div>
 
@@ -35,17 +34,17 @@ export default class SplashContent extends React.Component{
                         <ul>
                             <li>
                                 <div><img src={window.logo} alt="logo"/></div>
-                                <h3>Sign Up</h3>
+                                <h3>SIGN UP</h3>
                                 <p>Create your account in one simple step.</p>
                             </li>
                             <li>
                                 <div><i className="fas fa-plus-square"></i></div>
-                                <h3>Add Content</h3>
+                                <h3>ADD CONTENT</h3>
                                 <p>Type your notes and save them to your notebooks.</p>
                             </li>
                             <li>
                                 <div><i className="fas fa-check-square"></i></div>
-                                <h3>Get Things Done</h3>
+                                <h3>GET THINGS DONE</h3>
                                 <p>Now you can focus on getting things, instead of trying to remember what you needed to do.</p>
                             </li>
                         </ul>

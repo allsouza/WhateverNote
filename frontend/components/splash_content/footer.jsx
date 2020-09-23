@@ -11,7 +11,7 @@ export default function Footer(){
             </span>
             <ul className="outer-list">
                 <li>
-                    <h3>Languages</h3>
+                    <h3>LANGUAGES</h3>
                     <ul>
                        <li>Ruby</li>
                        <li>JavaScript</li>
@@ -23,7 +23,7 @@ export default function Footer(){
                     </ul>
                 </li>
                 <li>
-                    <h3>Frameworks</h3>
+                    <h3>FRAMEWORKS</h3>
                     <ul>
                         <li>Rails</li>
                         <li>React</li>
@@ -32,7 +32,7 @@ export default function Footer(){
                     </ul>
                 </li>
                 <li>
-                    <h3>Contact me</h3>
+                    <h3>CONTACT ME</h3>
                     <ul>
                         <li><a href="https://github.com/allsouza"><i className="fab fa-github"></i> GitHub</a></li>
                         <li><a href="https://www.linkedin.com/in/andre-souza-2ab6a3155/"><i className="fab fa-linkedin"></i> LinkedIn</a></li>

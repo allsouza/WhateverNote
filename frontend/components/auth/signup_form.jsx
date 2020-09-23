@@ -8,14 +8,18 @@ export default class SignupForm extends React.Component{
             email: "",
             password: "",
             first_name: "",
-            last_name: ""
+            last_name: "",
+            errors: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(field){
-        return e => this.setState({[field]: e.target.value})
+        return e => {
+            this.setState({[field]: e.target.value})
+            if(this.props.errors.length > 0) this.props.clearErrors();
+        }
     }
 
     handleSubmit(e){
@@ -24,14 +28,19 @@ export default class SignupForm extends React.Component{
     }
 
     render(){
+        const firstError = this.props.errors[0] || [];
+        let errors = this.props.errors[0] || [];
+        errors = errors.map(error=>(<li>{error}</li>));
+        
         return(
             <div className="signup-form">
-                <Link to='/'><div className="form-logo">
+                <div className="form-logo"><Link to='/'>
                     <img src={window.logo} alt="WhateverNote"/>
                     <h2>WhateverNote</h2>
                     <p>Remember whatever you need.</p>
-                </div></Link>
+                </Link></div>
                 <form onSubmit={this.handleSubmit}>
+                    
                     <input type="text" placeholder="First name" onChange={this.handleChange('first_name')} value={this.state.first_name}/>
 
                     <input type="text" placeholder="Last name" onChange={this.handleChange('last_name')} value={this.state.last_name}/>
@@ -39,6 +48,9 @@ export default class SignupForm extends React.Component{
                     <input type="text" placeholder="Email address" onChange={this.handleChange('email')} value={this.state.email}/>
 
                     <input type="password" placeholder="Password" onChange={this.handleChange('password')} value={this.state.password} />
+                    
+                    {/* <ul className="errors"><li>{firstError[0]}</li></ul> */}
+                    <ul className="errors">{errors}</ul>
 
                     <button>Sign up</button>
                 </form>
