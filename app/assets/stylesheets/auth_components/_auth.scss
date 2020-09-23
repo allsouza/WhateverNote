@@ -15,6 +15,15 @@
         opacity: 0.2;
     }
 
+    #reference{
+        z-index: 2;
+        position: absolute;
+        bottom: -40px;
+        right: 0;
+        background: transparent;
+        color: $lightest-blue;
+    }
+
     .appear{
         transition: opacity 1s, background-color 0.5s;
     }

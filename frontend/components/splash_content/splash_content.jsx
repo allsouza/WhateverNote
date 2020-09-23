@@ -24,6 +24,7 @@ export default class SplashContent extends React.Component{
                         <div id="signup-button"><Link  to='/auth/signup'>Sign up for free</Link></div>
                     </div>
                     <img src={window.splash1} alt="splash1"/>
+                    <a id="reference" href="http://www.freepik.com">@</a>
                 </div>
                 </div>
 

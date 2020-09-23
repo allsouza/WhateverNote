@@ -10,6 +10,7 @@ export default class Auth extends React.Component{
         return(
             <div className="auth">
                 <img id="auth-background" src={window.authbackground} />
+                <a id="reference" href="https://www.freepik.com/vectors/background">@</a>
                 <Switch>
                     <Route exact path='/auth/login' component={LoginFormContainer} />
                     <Route exact path='/auth/signup' component={SignupFormContainer} />
