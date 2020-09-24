@@ -9,7 +9,7 @@ class Api::NotesController < ApplicationController
 
     def create
         @note = Note.new(note_params)
-        @note.author_id = current_user.id || 4 #Change this later
+        @note.author_id = current_user.id
         if @note.save
             render :show
         else

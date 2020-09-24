@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import Editor from './editor';
-import {fetchNote} from '../../../actions/note_actions';
+import Editor from './editor_test';
+import {fetchNote, updateNote} from '../../../actions/note_actions';
 
 const mSTP = (state, ownProps) => {
     return({
@@ -10,7 +10,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return({
-        fetchNote: id => dispatch(fetchNote(id))
+        fetchNote: id => dispatch(fetchNote(id)),
+        updateNote: note => dispatch(updateNote(note))
     })
 }
 export default connect(mSTP, mDTP)(Editor);

@@ -1,16 +1,39 @@
 .editor{
-    padding: 20px;
     flex-grow: 1;
-    padding-right: 0;
 
-    nav{
-        margin-top: 28px;
+    .header{
+        position: relative;
+        padding-top: 50px;
+        overflow: hidden;
+
+        #toolbar-field{
+            height: 30px;
+            padding-left: 20px;
+
+            .active{
+                display: block;
+            }
+    
+            p, nav{
+                display: none;
+                position: absolute;
+                padding-bottom: 10px;
+            }
+            
+            p{
+                margin-bottom: 10px;
+                font-family: $body;
+                font-size: 13px;
+                color: $gray;
+            }
+        }
     }
     form{
         display: block;
-        padding-left: 25px;
+        padding-left: 40px;
         padding-top: 31px;
         color: $dark-gray;
+        border-top: 1px solid $light-gray;
 
         #title{
             color: inherit;

@@ -3,9 +3,11 @@ import React from 'react';
 export default class Sidebar extends React.Component{
     constructor(props){
         super(props);
+
         this._displayUserDropdown = this._displayUserDropdown.bind(this);
         this._hideUserDropdown = this._hideUserDropdown.bind(this);
         this._select = this._select.bind(this);
+        this._createNote = this._createNote.bind(this);
         this.dropdown = "";
     }
 
@@ -29,6 +31,12 @@ export default class Sidebar extends React.Component{
         Array.from(actions).forEach(action=>{action.classList.remove('selected')});
         e.currentTarget.classList.add('selected');
         this._redirect(e.currentTarget.id)
+    }
+
+    _createNote(){
+        this.props.createNote({title: "Untitled", body: "", notebook_id:1, author_id:this.props.user.id}).then(payload=>{
+            this.props.history.push(`/app/notes/${payload.note.id}`)
+        })
     }
     
     _redirect(component){
@@ -66,7 +74,7 @@ export default class Sidebar extends React.Component{
                     <li id="logout" onClick={this.props.logout}><p>{`Sign out ${user.first_name} ${user.last_name}`}</p></li>
                 </ul>
                 
-                <button><i className="fas fa-plus"></i>New Note</button>
+                <button onClick={this._createNote}><i className="fas fa-plus"></i>New Note</button>
 
                 <ul className="actions">
                     <li onClick={this._select} id="NotesIndex" className="action selected"><i className="fas fa-sticky-note"></i>All Notes</li>

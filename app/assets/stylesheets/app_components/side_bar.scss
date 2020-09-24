@@ -43,6 +43,7 @@
         visibility: hidden;
         opacity: 0;
         height: 0;
+        overflow: hidden;
     }
     
     .user-dropdown{
@@ -60,7 +61,7 @@
         border-radius: 3px;
         padding: 10px 0;
         box-shadow: 0 0 10px $darkest-blue;
-        transition: all 0.5s;
+        transition: opacity 0.5s;
         
         h3{
             color: $gray;
@@ -102,7 +103,7 @@
             background: transparent;
             padding: 2px 20px;
             margin: 8px 0;
-            transition: inherit;
+            transition: background-color 0.5s;
 
             i{
                 background: inherit;

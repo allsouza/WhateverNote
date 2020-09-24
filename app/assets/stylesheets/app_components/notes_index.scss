@@ -45,7 +45,7 @@
                 padding: 5px 0;
                 font-size: 14px;
                 line-height: 1.4em;
-                max-height: 3em;
+                height: 3em;
                 overflow: hidden;
                 background: inherit;
             }
@@ -59,6 +59,10 @@
         li:hover{
             background-color: $white-blue;
             cursor: pointer;
+        }
+
+        li.selected{
+            border: 1px solid $dark-blue;
         }
     }
 }

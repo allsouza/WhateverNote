@@ -3,31 +3,29 @@ import React from 'react';
 export default class Editor extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-            note: {title:""},
-            autoSave: "",
-            test: "testing"
-        }
+        this.state= Object.assign({}, this.props.note)
+
+        // Bindings
         this.selectTextarea = this.selectTextarea.bind(this);
         this.leaveTextarea = this.leaveTextarea.bind(this);
+        this.autoSave = this.autoSave.bind(this)
     }
 
     componentDidUpdate(prevProps, prevState){
-        if(prevState.note.id !== this.props.note.id){
-            const {note} = this.props
-            this.setState({note})
+        if(prevState.id !== this.props.note.id){
+            Object.keys(this.props.note).forEach(key=>{
+                this.setState({[key]:this.props.note[key]})
+            })
+            if(this.state.title === "Untitled"){
+                this.setState({title: ""})
+            }
         }
     }
 
     handleChange(field){
         return e => {
-            this.setState({note:{[field]:e.target.value}})
-            console.log(field);
-            console.log(e.target.value);
-            if(field === "title")
-            {
-                this.autoSave();
-            }
+            this.setState({[field]: e.target.value});
+            console.log(this.state);
         }
     }
 
@@ -39,20 +37,26 @@ export default class Editor extends React.Component{
     }
 
     autoSave(){
-        this.props.updateNote(this.state.note)
+        if(this.state.title === ''){
+            this.setState({title: "Untitled"})
+        }
+        this.props.updateNote(this.state)
     }
 
     selectTextarea(){
-        this.toolbarToggle()
+        this.toolbarToggle();
+        this.saving = setInterval(this.autoSave, 30000);
     }
 
     leaveTextarea(){
-        this.toolbarToggle()
+        this.toolbarToggle();
+        clearInterval(this.saving)
+        this.autoSave();
     }
 
-    formatDate(){
+    _formatDate(){
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        const date = new Date(this.state.note.updated_at)
+        const date = new Date(this.state.updated_at)
         return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
     }
 
@@ -65,7 +69,7 @@ export default class Editor extends React.Component{
             <div className="editor">
                 <div className="header">
                     <div id="toolbar-field">
-                        <p className="display active">Last edited on {this.formatDate()}</p>
+                        <p className="display active">Last edited on {this._formatDate()}</p>
                         <nav className="toolbar">
                             {/* Rich text editing toolbar goes here */}
                             <img src={window.editing} alt=""/>
@@ -73,12 +77,16 @@ export default class Editor extends React.Component{
                     </div>
                 </div>
                 <form>
-                    <input id="title" type="text" onChange={this.handleChange('title')} value={this.state.note.title} placeholder="Title"/>
-                    <input type="text" onChange={this.test} value={this.state.test}/>
-                    <textarea  id="body" value={this.state.note.body}
-                                // onFocus={this.selectTextarea} 
-                                // onBlur={this.leaveTextarea}
+                    <input id="title" type="text" 
+                            onChange={this.handleChange('title')} 
+                            onBlur={this.autoSave}
+                            value={this.state.title} placeholder="Title"/>
+                    
+                    <textarea  id="body" value={this.state.body}
+                                onFocus={this.selectTextarea} 
+                                onBlur={this.leaveTextarea}
                                 onChange={this.handleChange('body')}
+                                placeholder="Start writing your note"
                                   ></textarea>
                 </form>
             </div>

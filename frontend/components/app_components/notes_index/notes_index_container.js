@@ -3,9 +3,13 @@ import NotesIndex from './notes_index';
 import {fetchNote, fetchNotes} from '../../../actions/note_actions';
 import { withRouter } from "react-router-dom";
 
+function sortByLastUptade(note1, note2){
+    return note1.updated_at <= note2.updated_at ? 1 : -1;
+}
+
 const mSTP = (state) => {
     return({
-    notes: Object.values(state.entities.notes),
+    notes: Object.values(state.entities.notes).sort(sortByLastUptade),
 })}
 
 const mDTP = dispatch => ({
