@@ -16,8 +16,7 @@ users = User.create!([
 
 notes = Note.create!([
     {title:"Things I said", 
-    body:"Hey, look – balloons! It is a party!\nHey, conscience. Am I dead?\n
-    Yes, trust. It’s what friends do.\nWhoa, whoa, whoa! Hey! Relax. Take a deep breath.",
+    body:"Hey, look – balloons! It is a party!\nHey, conscience. Am I dead?\nYes, trust. It’s what friends do.\nWhoa, whoa, whoa! Hey! Relax. Take a deep breath.",
     author_id:users[0].id, notebook_id: 1},
     {title:"My summer hit song", 
     body:"DORY:

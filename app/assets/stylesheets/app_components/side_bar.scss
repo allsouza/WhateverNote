@@ -60,6 +60,7 @@
         border-radius: 3px;
         padding: 10px 0;
         box-shadow: 0 0 10px $darkest-blue;
+        transition: all 0.5s;
         
         h3{
             color: $gray;
@@ -70,7 +71,7 @@
             font-weight: bold;
         }
         li{
-            background: inherit;
+            background-color: transparent;
             margin: 8px 0px;
             border-bottom: 1px solid $light-gray;
 
@@ -82,6 +83,7 @@
                 padding-left: 20px;
                 color: $dark-blue;
                 background-color: inherit;
+                transition: inherit;
             }
         }
 
@@ -91,7 +93,7 @@
 
         li:hover p, li:hover #user-info{
             cursor: pointer;
-            background: $light-gray;
+            background-color: $light-gray;
         }
 
         #user-info{
@@ -100,6 +102,7 @@
             background: transparent;
             padding: 2px 20px;
             margin: 8px 0;
+            transition: inherit;
 
             i{
                 background: inherit;
