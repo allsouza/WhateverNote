@@ -1,24 +1,30 @@
 .editor{
     padding: 20px;
     flex-grow: 1;
+    padding-right: 0;
 
     nav{
         margin-top: 28px;
     }
     form{
         display: block;
-        padding: 30px;
+        padding-left: 25px;
+        padding-top: 31px;
+        color: $dark-gray;
 
         #title{
+            color: inherit;
             display: block;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
         }
 
         #body{
+            margin-top: 25px;
+            color: inherit;
             box-sizing: border-box;
             width: 100%;
-            height: auto;
+            min-height: 63vh;
         }
     }
 }
