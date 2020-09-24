@@ -1,6 +1,7 @@
 import React from 'react';
 import NoteIndexItem from './notes_index_item';
 import EditorContainer from '../editor/editor_container';
+import {sortByLastUptade} from './notes_index_container';
 
 export default class NotesIndex extends React.Component{
     constructor(props){
@@ -9,14 +10,20 @@ export default class NotesIndex extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchNotes().then(payload=>{
-            this.props.history.push(`/app/notes/${payload.notes[0].id}`)
+        this.props.fetchNotes().then((payload)=>{
+            const notes = payload.notes.sort(sortByLastUptade);
+            this.props.history.push(`/app/notes/${notes[0].id}`);
+            document.getElementsByClassName('note-item')[0].classList.add('selected');
             }
         )
     }
 
-    openNote(id){
+    openNote(e, id){
         this.props.history.push(`/app/notes/${id}`)
+        e.currentTarget.parentElement.childNodes.forEach(li=>{
+            li.classList.remove('selected')
+        })
+        e.currentTarget.classList.add('selected');
     }
 
     render(){

@@ -1,9 +1,8 @@
 import React from 'react';
 
 export default function NotesIndexItem({note, openNote}){
-
     return(
-        <li onClick={() => openNote(note.id)}>
+        <li className="note-item" onClick={e => openNote(e, note.id)}>
             <h3>{note.title}</h3>
             <p className="body">{sample(note.body)}</p>
             <p className="date">{formatDate(new Date(note.updated_at))}</p>
