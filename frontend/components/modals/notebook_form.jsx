@@ -23,13 +23,16 @@ export default class NotebookForm extends React.Component{
     render(){
         return(
             <div className="notebook-form">
-                <h1>{this.props.formType}</h1>
+                <div className="title"><h1>{this.props.formType}</h1><i onClick={this.props.closeModal} className="fas fa-times"></i></div>
                 {this.props.formType === "Create new notebook" ? <p>
                     Notebooks are useful for grouping notes around a common topic.
                 </p> : null}
-                <label>Name</label>
-                <input type="text" onChange={this.handleChange} value={this.state.name} placeholder="Notebook name"/>
-                <ul>{this.props.errors}</ul>
+                
+                <form >
+                    <label>Name</label>
+                    <input type="text" onChange={this.handleChange} value={this.state.name} placeholder="Notebook name"/>
+                    <ul>{this.props.errors}</ul>
+                </form>
 
                 <div className="buttons">
                     <button onClick={this.props.closeModal} className="cancel">Cancel</button>

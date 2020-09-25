@@ -1,20 +1,4 @@
-.modal-bckgrd {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.452);
-    z-index: 10;
-  }
-  
-  .modal-ele {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    
+.modal-ele{
     .note-info{
         border-radius: inherit;
         box-shadow: 0 0 20px $text-gray;
@@ -55,4 +39,4 @@
             color: $text-gray;
         }
     }
-  }
+}

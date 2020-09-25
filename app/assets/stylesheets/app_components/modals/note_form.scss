@@ -1,0 +1,43 @@
+.modal-ele{
+    .notebook-form{
+        height: 320px;
+        width: 550px;
+        box-sizing: border-box;
+        color: $darkest-blue;
+        padding: 25px;
+        border-radius: inherit;
+        box-shadow: 0 0 20px $text-gray;
+        font-family: $body;
+        display: flex;
+        flex-direction: column;
+        justify-content: space;
+
+        .title{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            i{
+                padding: 0 5px;
+            }
+            h1{
+                color: inherit;
+                font-size: 18px;
+            }
+        }
+
+        p{
+            font-family: inherit;
+            color: $text-gray;
+            font-size: 14px;
+        }
+
+        form{
+            justify-self: center;
+        }
+
+        .buttons{
+            align-self: flex-end;
+        }
+    }
+}

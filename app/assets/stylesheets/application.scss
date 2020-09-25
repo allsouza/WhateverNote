@@ -23,6 +23,11 @@
 
 @import "auth_components/*";
 @import "app_components/*";
+@import 'app_components/editor/*';
+@import 'app_components/notebooks_index/*';
+@import 'app_components/notes_index/*';
+@import 'app_components/sidebar/*';
+@import 'app_components/modals/*';
 
 h1, h2, h3{
     font-family: $title;
