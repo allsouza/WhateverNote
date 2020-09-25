@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function NoteInfo({note, author}){
-    debugger
+export default function NoteInfo({note, author, closeModal}){
+
     return(
         <div className="note-info">
-            <h1>Note Info</h1>
+            <div><h1>Note Info</h1><i onClick={closeModal} className="fas fa-times"></i></div>
             <table>
             <tbody>
                  <tr>

@@ -4,7 +4,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.452);
     z-index: 10;
   }
   
@@ -13,8 +13,46 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    border-radius: 5px;
+    
     .note-info{
+        border-radius: inherit;
+        box-shadow: 0 0 20px $text-gray;
+        font-family: $body;
+        padding: 20px;
+        box-sizing: border-box;
+        width: 590px;
+        color: $dark-gray;
         
+        div{
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+
+            h1{
+                padding-top: 5px;
+                font-size: 18px;
+                color: inherit;
+            }
+            i{
+                color: $text-gray;
+                transition: color 0.5s;
+            }
+
+            i:hover{
+                cursor: pointer;
+                color: $dark-gray;
+            }
+        }
+        td{
+            padding: 10px 0;
+            padding-right: 40px;
+            font-size: 14px;
+            color: inherit;
+        }
+
+        td:first-child{
+            color: $text-gray;
+        }
     }
   }
