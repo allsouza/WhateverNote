@@ -18,25 +18,19 @@ export default class Header extends React.Component{
         })
     }
 
-    _formatDate(){
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        const date = new Date(this.state.updated_at)
-        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
-    }
-
     _handleOptionsClick(){
         this.setState({options: !this.state.options})
     }
 
     _handleOptionsBlur(){
-        this.setState({options: false})
+        setTimeout(()=>this.setState({options: false}), 250);
     }
 
     render(){
         return(
             <div className="header">
             <div id='first-header'>
-                <div id="left">
+                <div className="left">
                     <button 
                         className="size-toggle show"
                         onClick={this.sizeToggle}
@@ -56,7 +50,7 @@ export default class Header extends React.Component{
                         Collapse editor</div>
                     </button>
                 </div>
-                <div id="right">
+                <div className="right">
                     <button 
                         id="note-options" 
                         onClick={this._handleOptionsClick}
@@ -71,14 +65,17 @@ export default class Header extends React.Component{
                     {this.state.options ? (
                         <ul id="options-dropdown" >
                             <li><ul><li>Note info</li></ul></li>
-                            <li><ul><li onClick={this.props.deleteNote}>Delete note</li></ul></li>
+                            <li><ul><li onClick={()=>{
+                                this.props.deleteNote();
+                                this._handleOptionsBlur();
+                                }}>Delete note</li></ul></li>
                         </ul>
                     ) : null}
                 </div>
                 
             </div>
             <div id="toolbar-field">
-                <p className="display active">Last edited on {this._formatDate()}</p>
+                <p className="display active">Last edited on {this.props.formatDate()}</p>
                 <nav className="toolbar">
                     {/* Rich text editing toolbar goes here */}
                     <img src={window.editing} alt=""/>
