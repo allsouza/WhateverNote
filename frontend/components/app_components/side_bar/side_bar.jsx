@@ -1,10 +1,11 @@
 import React from 'react';
-import NotebooksSidebar from './notebooks_sidebar_container';
+import Actions from './actions';
+import UserDropdown from './user-dropdown';
 
 export default class Sidebar extends React.Component{
     constructor(props){
         super(props);
-
+        this.state = {expanded: null}
         this._displayUserDropdown = this._displayUserDropdown.bind(this);
         this._hideUserDropdown = this._hideUserDropdown.bind(this);
         this._select = this._select.bind(this);
@@ -52,6 +53,19 @@ export default class Sidebar extends React.Component{
         }
     }
 
+    _expand(target){
+        switch (target) {
+            case "notebooks":
+                if (this.state.expanded !== "notebooks"){
+                    this.setState({expanded: "notebooks"})
+                    break;
+                }
+            default:
+                this.setState({expanded:null})
+                break;
+        }
+    }
+
     render(){
         const {user} = this.props;
         return(
@@ -60,27 +74,12 @@ export default class Sidebar extends React.Component{
                     <img src={window[user.user_icon]} alt=""/>
                     <p>{`${user.first_name} ${user.last_name}`}<i className="fas fa-angle-down"></i></p>
                 </div>
-                <ul className="user-dropdown hidden">
-                    <h3>ACCOUNT</h3>
-                    <li>
-                        <div id="user-info">
-                            <i className="fas fa-check"></i>
-                            <img src={window[user.user_icon]} alt=""/>
-                            <div>
-                                <h3>{`${user.first_name} ${user.last_name}`}</h3>
-                                <p>{user.email}</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li id="logout" onClick={this.props.logout}><p>{`Sign out ${user.first_name} ${user.last_name}`}</p></li>
-                </ul>
+
+                <UserDropdown user={user} logout={this.props.logout}/>
                 
                 <button onClick={this._createNote}><i className="fas fa-plus"></i>New Note</button>
 
-                <ul className="actions">
-                    <li onClick={this._select} id="NotesIndex" className="action selected"><i className="fas fa-sticky-note"></i>All Notes</li>
-                    <li onClick={this._select} id="NotebooksIndex" className="action"><NotebooksSidebar /></li>
-                </ul>
+                <Actions select={this._select} expand={this._expand.bind(this)} expanded={this.state.expanded}/>
             </div>
         )
     }

@@ -3,7 +3,7 @@ import {fetchNotebooks} from '../../../actions/notebook_actions';
 import NotebooksSidebar from './notebooks_sidebar';
 
 const mSTP = state => ({
-    notebooks: state.entities.notebooks
+    notebooks: Object.values(state.entities.notebooks)
 })
 
 const mDTP = dispatch => ({

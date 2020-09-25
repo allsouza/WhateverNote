@@ -20,10 +20,12 @@ export default class Editor extends React.Component{
     componentDidUpdate(prevProps, prevState){
         
         if(prevProps.location.pathname !== this.props.location.pathname){
-            Object.keys(this.props.note).forEach(key=>{
-                this.setState({[key]:this.props.note[key]})
-            })
-            this.setState({noteIds: this.props.noteIds})
+            if (typeof this.props.note !== 'undefined'){
+                Object.keys(this.props.note).forEach(key=>{
+                    this.setState({[key]:this.props.note[key]})
+                })
+                this.setState({noteIds: this.props.noteIds})
+            }
         }
     }
 
