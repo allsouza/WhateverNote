@@ -9,8 +9,8 @@ export default class Header extends React.Component{
                     <h1>Notebooks</h1>
                 </div>
                 <div className="bottom-header">
-                    <h3>My notebook list</h3>
-                    <button onClick={()=>this.props.openModal("newNotebook")}><i className="fas fa-plus-square"></i>New Notebook</button>
+                    <div><h3>My notebook list</h3></div>
+                    <div><button onClick={()=>this.props.openModal("newNotebook")}><i className="fas fa-plus-square"></i>New Notebook</button></div>
                 </div>
             </div>
         )
