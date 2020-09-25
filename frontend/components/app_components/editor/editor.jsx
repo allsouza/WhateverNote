@@ -5,7 +5,7 @@ export default class Editor extends React.Component{
         super(props);
         this.state= Object.assign({}, this.props.note,{
             options: false,
-            notes: props.notes
+            noteIds: props.noteIds
         })
 
         // Bindings
@@ -33,10 +33,7 @@ export default class Editor extends React.Component{
             Object.keys(this.props.note).forEach(key=>{
                 this.setState({[key]:this.props.note[key]})
             })
-            this.setState({notes: this.props.notes})
-            if(this.state.title === "Untitled"){
-                this.setState({title: ""})
-            }
+            this.setState({noteIds: this.props.noteIds})
         }
     }
 
@@ -80,15 +77,14 @@ export default class Editor extends React.Component{
     }
 
     _handleOptionsBlur(){
-        // this.setState({options: false})
+        this.setState({options: false})
     }
 
     deleteNote(){
-        const remId = this.state.notes.indexOf(this.state.id);
-        this.state.notes.splice(remId, 1)
-        this.props.history.push(`/app/notes/${this.state.notes[0]}`);
-        this.props.deleteNote(this.state.id)//.then(this.setState({options:false}));
-        
+        const remId = this.state.noteIds.indexOf(this.state.id);
+        this.state.noteIds.splice(remId, 1)
+        this.props.history.push(`/app/notes/${this.state.noteIds[0]}`);
+        this.props.deleteNote(this.state.id)
     }
 
     render(){
@@ -130,7 +126,8 @@ export default class Editor extends React.Component{
                     <input id="title" type="text" 
                             onChange={this.handleChange('title')} 
                             onBlur={this.autoSave}
-                            value={this.state.title} placeholder="Title"/>
+                            value={this.state.title === "Untitled" ? "" : this.state.title} 
+                            placeholder="Title"/>
                     
                     <textarea  id="body" value={this.state.body}
                                 onFocus={this.selectTextarea} 

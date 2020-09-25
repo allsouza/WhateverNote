@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 const mSTP = (state, ownProps) => {
     return({
         note: state.entities.notes[ownProps.id],
-        notes: ownProps.notes.map(note=>note.id)
+        noteIds: ownProps.notes.map(note=>note.id)
     })
 }
 
