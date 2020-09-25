@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    # protect_from_forgery with: :null_session #disable auth token
+    protect_from_forgery with: :null_session #disable auth token
 
     helper_method :current_user, :logged_in?
 
