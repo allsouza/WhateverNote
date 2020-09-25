@@ -41,11 +41,19 @@ export default class Header extends React.Component{
                         className="size-toggle show"
                         onClick={this.sizeToggle}
                         ><i className="fas fa-expand-alt"></i>
+
+                        <div className='center description'>
+                        <div className="arrow"></div>
+                        Expand editor</div>
                     </button>
                     <button 
                         onClick={this.sizeToggle}
                         className="size-toggle"
                         ><i className="fas fa-compress-alt"></i>
+
+                        <div className='left description'>
+                        <div className="arrow"></div>
+                        Collapse editor</div>
                     </button>
                 </div>
                 <div id="right">
@@ -54,16 +62,18 @@ export default class Header extends React.Component{
                         onClick={this._handleOptionsClick}
                         onBlur={this._handleOptionsBlur}
                         >
-                        
                         <i className="fas fa-ellipsis-h"></i>
+                        <div className='right description'>
+                        <div className="arrow"></div>
+                        More actions</div>
 
-                        {this.state.options ? (
-                            <ul id="options-dropdown" >
-                                <li><ul><li>Note info</li></ul></li>
-                                <li><ul><li onClick={this.props.deleteNote}>Delete note</li></ul></li>
-                            </ul>
-                        ) : null}
                     </button>
+                    {this.state.options ? (
+                        <ul id="options-dropdown" >
+                            <li><ul><li>Note info</li></ul></li>
+                            <li><ul><li onClick={this.props.deleteNote}>Delete note</li></ul></li>
+                        </ul>
+                    ) : null}
                 </div>
                 
             </div>

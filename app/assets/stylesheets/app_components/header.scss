@@ -2,14 +2,54 @@
     .header{
         position: relative;
 
+        div{
+            transition: opacity 0.5s, z-index 0.5s;
+        }
+
         #first-header{
             display: flex;
             justify-content: space-between;
             height: 30px;
             padding: 5px 0;
             padding-bottom: 15px;
+
+            .description{
+                opacity: 0;
+                position: absolute;
+                z-index: -1;
+                transform: translate(-43%, 0);
+                margin-top: 15px;
+                width: max-content;
+                padding: 12px;
+                background-color: $dark-blue;
+                color:white;
+                border-radius: 5px;
+
+                .arrow{
+                    z-index: 4;
+                    position: absolute;
+                    left: 43%;
+                    top: -5px;
+                    width: 0; 
+                    height: 0; 
+                    border-left: 7px solid transparent;
+                    border-right: 7px solid transparent; 
+                    border-bottom:7px solid $dark-blue;
+                    background: transparent 
+                }
+            }
+
             #right{
                 padding-right: 10px;
+
+                .right.description{
+                    right: -5px;
+                    transform: none;
+                    .arrow{
+                        left: 77%;
+                    }
+                }
+
                 #note-options{
                     padding: 10px 5px;
                     width: auto;
@@ -28,18 +68,22 @@
                     i{
                         color: $dark-blue;
                     }
+                    .description{
+                        opacity: 1;
+                        z-index: 3;
+                    }
                 }
-    
     
                 #options-dropdown{
                     position: absolute;
-                    z-index: 2;
-                    top:35px;
-                    right: 3px;
+                    z-index: 5;
+                    top:45px;
+                    right: 10px;
                     width: 160px;
                     box-shadow: 0 0 5px $gray;
                     box-sizing: border-box;
                     padding: 5px 0;
+                    font-family: $body;
 
                     li{
                         li{
@@ -61,18 +105,28 @@
 
                     li:hover{
                         background-color: $light-gray;
+                        cursor: pointer;
                     }
                 }
             }
 
             #left{
                 padding-left: 10px;
+
+                .left.description{
+                    left: -5px;
+                    transform: none;
+                    .arrow{
+                        left: 7%;
+                    }
+                }
                 
                 .size-toggle{
                     display: none;
                     padding: 10px 5px;
                     width: auto;
                     border-radius: 3px;
+                    position: relative;
                     i{
                         background-color: transparent;
                         color: gray;
@@ -85,6 +139,10 @@
                     cursor: pointer;
                     i{
                         color: $dark-blue;
+                    }
+                    .description{
+                        opacity: 1;
+                        z-index: 3;
                     }
                 }
 
@@ -102,9 +160,14 @@
                 display: block;
             }
     
+            img{
+                height: 25px;
+                max-width: 90%;
+                position: absolute;
+            }
+
             p, nav{
                 display: none;
-                position: absolute;
             }
             
             p{
