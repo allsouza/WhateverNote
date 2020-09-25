@@ -64,7 +64,9 @@ export default class Header extends React.Component{
                     </button>
                     {this.state.options ? (
                         <ul id="options-dropdown" >
-                            <li><ul><li>Note info</li></ul></li>
+                            <li><ul><li
+                                onClick={()=>this.props.openModal('noteInfo')}
+                                >Note info</li></ul></li>
                             <li><ul><li onClick={()=>{
                                 this.props.deleteNote();
                                 this._handleOptionsBlur();
