@@ -87,13 +87,32 @@ export default class Editor extends React.Component{
         this.props.deleteNote(this.state.id)
     }
 
+    sizeToggle(){
+        Array.from(document.getElementsByClassName('size-toggle')).forEach(ele=>{
+            ele.classList.toggle('show');
+        })
+        const toMod = [document.getElementsByClassName('side-bar')[0], document.getElementsByClassName('notes-index')[0]];
+        toMod.forEach(ele=>{
+            ele.classList.toggle('minimized');
+        })
+    }
+
     render(){
         return(
             <div className="editor">
                 <div className="header">
                     <div id='first-header'>
                         <div id="left">
-
+                            <button 
+                                className="size-toggle show"
+                                onClick={this.sizeToggle}
+                                ><i className="fas fa-expand-alt"></i>
+                            </button>
+                            <button 
+                                onClick={this.sizeToggle}
+                                className="size-toggle"
+                                ><i className="fas fa-compress-alt"></i>
+                            </button>
                         </div>
                         <div id="right">
                             <button 

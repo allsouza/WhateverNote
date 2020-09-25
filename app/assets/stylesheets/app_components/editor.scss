@@ -8,21 +8,28 @@
             display: flex;
             justify-content: space-between;
             height: 30px;
-            padding: 15px 0;
-
+            padding: 5px 0;
+            padding-bottom: 15px;
             #right{
                 padding-right: 10px;
                 #note-options{
                     padding: 10px 5px;
                     width: auto;
                     position: relative;
-                    color: gray;
                     border-radius: 3px;
+                    i{
+                        background-color: transparent;
+                        color: gray;
+                        transition: color 0.5s;
+                    }
                 }
     
                 #note-options:hover{
                     background-color: $lightest-blue;
                     cursor: pointer;
+                    i{
+                        color: $dark-blue;
+                    }
                 }
     
     
@@ -60,7 +67,33 @@
                 }
             }
 
-            #left{}
+            #left{
+                padding-left: 10px;
+                
+                .size-toggle{
+                    display: none;
+                    padding: 10px 5px;
+                    width: auto;
+                    border-radius: 3px;
+                    i{
+                        background-color: transparent;
+                        color: gray;
+                        transition: color 0.5s;
+                    }
+                }
+
+                .size-toggle:hover{
+                    background-color: $lightest-blue;
+                    cursor: pointer;
+                    i{
+                        color: $dark-blue;
+                    }
+                }
+
+                .show{
+                    display: block;
+                }
+            }
         }
 
         #toolbar-field{
