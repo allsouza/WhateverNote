@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import NoteInfo from './note_info_container';
+import NewNotebookContainer from '../modals/new_notebook_container';
 
 function Modal({modal, closeModal}){
 
@@ -12,6 +13,9 @@ function Modal({modal, closeModal}){
     switch (modal) {
         case 'noteInfo':
             component=<NoteInfo />
+            break;
+        case 'newNotebook':
+            component=<NewNotebookContainer />
             break;
         default:
             return null;
