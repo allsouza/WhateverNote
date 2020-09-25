@@ -13,6 +13,15 @@
 #                           PATCH  /api/notes/:id(.:format)                                                                 api/notes#update {:default=>{:format=>:json}}
 #                           PUT    /api/notes/:id(.:format)                                                                 api/notes#update {:default=>{:format=>:json}}
 #                           DELETE /api/notes/:id(.:format)                                                                 api/notes#destroy {:default=>{:format=>:json}}
+#        api_notebook_notes POST   /api/notebooks/:notebook_id/notes(.:format)                                              api/notes#create {:default=>{:format=>:json}}
+#             api_notebooks GET    /api/notebooks(.:format)                                                                 api/notebooks#index {:default=>{:format=>:json}}
+#                           POST   /api/notebooks(.:format)                                                                 api/notebooks#create {:default=>{:format=>:json}}
+#          new_api_notebook GET    /api/notebooks/new(.:format)                                                             api/notebooks#new {:default=>{:format=>:json}}
+#         edit_api_notebook GET    /api/notebooks/:id/edit(.:format)                                                        api/notebooks#edit {:default=>{:format=>:json}}
+#              api_notebook GET    /api/notebooks/:id(.:format)                                                             api/notebooks#show {:default=>{:format=>:json}}
+#                           PATCH  /api/notebooks/:id(.:format)                                                             api/notebooks#update {:default=>{:format=>:json}}
+#                           PUT    /api/notebooks/:id(.:format)                                                             api/notebooks#update {:default=>{:format=>:json}}
+#                           DELETE /api/notebooks/:id(.:format)                                                             api/notebooks#destroy {:default=>{:format=>:json}}
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -27,5 +36,8 @@ Rails.application.routes.draw do
     resources :users, only: %i(create)
     resource :session, only: %i(create destroy)
     resources :notes
+    resources :notebooks do
+      resources :notes, only: :create
+    end
   end
 end

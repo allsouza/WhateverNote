@@ -9,15 +9,20 @@ require 'faker'
 
 User.destroy_all
 Note.destroy_all
+Notebook.destroy_all
 
 users = User.create!([
     {email:'dori@coralreef.au', password:"iforgot", first_name:"Dori", last_name:"Tang", user_icon: "dori"}
 ])
 
+notebooks = Notebook.create!([
+    {name:"My Notebook", author_id:users[0].id}
+])
+
 notes = Note.create!([
     {title:"Things I said", 
     body:"Hey, look – balloons! It is a party!\nHey, conscience. Am I dead?\nYes, trust. It’s what friends do.\nWhoa, whoa, whoa! Hey! Relax. Take a deep breath.",
-    author_id:users[0].id, notebook_id: 1},
+    author_id:users[0].id, notebook_id: notebooks[0].id},
     {title:"My summer hit song", 
     body:"DORY:
     Hey mister grumpy gills
@@ -86,5 +91,5 @@ notes = Note.create!([
     We just keep swimming on
     DORY:
     To P Sherman 42 Wallaby Way, Sydney!",
-    author_id:users[0].id, notebook_id: 1}
+    author_id:users[0].id, notebook_id: notebooks[0].id}
 ])

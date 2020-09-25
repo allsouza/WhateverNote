@@ -7,12 +7,11 @@ class Note < ApplicationRecord
         foreign_key: :author_id,
         class_name: :User
 
-    # belongs_to :notebook,
-    #     foreign_key: :notebook_id,
-    #     class_name: :Notebook,
-    #     dependent: :destroy
+    belongs_to :notebook,
+        foreign_key: :notebook_id,
+        class_name: :Notebook
 
     def ensure_notebook
-        self.notebook_id ||= 1
+        self.notebook_id ||= Notebook.first.id
     end
 end
