@@ -12,7 +12,7 @@ export default function notebooksReducer(state={}, action){
                     createdAt: notebook.created_at,
                     name: notebook.name,
                     authorId: notebook.author_id,
-                    notes = notebook.notes.map(note => note.id)
+                    notes: notebook.notes.map(note => note.id)
                 }
             })
             return newState;
@@ -23,7 +23,7 @@ export default function notebooksReducer(state={}, action){
                     createdAt: notebook.created_at,
                     name: action.notebook.name,
                     authorId: action.notebook.author_id,
-                    notes = action.notebook.notes.map(note => note.id)
+                    notes: action.notebook.notes.map(note => note.id)
                 }});
         case REMOVE_NOTEBOOK:
             newState = Object.assign({}, state);

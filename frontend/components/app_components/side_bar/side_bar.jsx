@@ -1,4 +1,5 @@
 import React from 'react';
+import NotebooksSidebar from './notebooks_sidebar_container';
 
 export default class Sidebar extends React.Component{
     constructor(props){
@@ -41,8 +42,8 @@ export default class Sidebar extends React.Component{
     
     _redirect(component){
         switch (component) {
-            case "test":
-                this.props.history.push('/app/test')
+            case "NotebooksIndex":
+                this.props.history.push('/app/notebooks')
                 break;
         
             default:
@@ -78,7 +79,7 @@ export default class Sidebar extends React.Component{
 
                 <ul className="actions">
                     <li onClick={this._select} id="NotesIndex" className="action selected"><i className="fas fa-sticky-note"></i>All Notes</li>
-                    <li onClick={this._select} id="test" className="action"><i className="fas fa-sticky-note"></i>another test</li>
+                    <li onClick={this._select} id="NotebooksIndex" className="action"><NotebooksSidebar /></li>
                 </ul>
             </div>
         )

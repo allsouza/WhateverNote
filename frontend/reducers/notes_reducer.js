@@ -10,12 +10,12 @@ export default function notesReducer(state={}, action){
             return newState;
         case RECEIVE_NOTE:
             return Object.assign({}, state, {[action.note.id]: action.note})
-        case RECEIVE_NOTEBOOK:
-            action.notebook.notes.forEach(note=>{newState[note.id] = note});
-            return newState;
-        case RECEIVE_ALL_NOTEBOOKS:
-            action.notebooks.forEach(notebook => notebook.notes.forEach(note=>{newState[note.id] = note}))
-            return newState;
+        // case RECEIVE_NOTEBOOK:
+        //     action.notebook.notes.forEach(note=>{newState[note.id] = note});
+        //     return newState;
+        // case RECEIVE_ALL_NOTEBOOKS:
+        //     action.notebooks.forEach(notebook => notebook.notes.forEach(note=>{newState[note.id] = note}))
+        //     return newState;
         case REMOVE_NOTE:
             newState = Object.assign({}, state);
             delete newState[action.noteId];
