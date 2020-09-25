@@ -3,8 +3,65 @@
 
     .header{
         position: relative;
-        padding-top: 50px;
-        overflow: hidden;
+
+        #first-header{
+            display: flex;
+            justify-content: space-between;
+            height: 30px;
+            padding: 15px 0;
+
+            #right{
+                padding-right: 10px;
+                #note-options{
+                    padding: 10px 5px;
+                    width: auto;
+                    position: relative;
+                    color: gray;
+                    border-radius: 3px;
+                }
+    
+                #note-options:hover{
+                    background-color: $lightest-blue;
+                    cursor: pointer;
+                }
+    
+    
+                #options-dropdown{
+                    position: absolute;
+                    z-index: 2;
+                    top:35px;
+                    right: 3px;
+                    width: 160px;
+                    box-shadow: 0 0 5px $gray;
+                    box-sizing: border-box;
+                    padding: 5px 0;
+
+                    li{
+                        li{
+                            padding: 5px 20px;
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: $dark-gray;
+                            border:none;
+                        }
+                        ul{
+                            padding: 5px 0;
+                        }
+                        border-bottom: 1px solid $light-gray;
+                    }
+
+                    li:last-of-type{
+                        border: none;
+                    }
+
+                    li:hover{
+                        background-color: $light-gray;
+                    }
+                }
+            }
+
+            #left{}
+        }
 
         #toolbar-field{
             height: 30px;
@@ -17,7 +74,6 @@
             p, nav{
                 display: none;
                 position: absolute;
-                padding-bottom: 10px;
             }
             
             p{
@@ -29,11 +85,13 @@
         }
     }
     form{
-        display: block;
+        display: flex;
+        flex-direction: column;
         padding-left: 40px;
         padding-top: 31px;
         color: $dark-gray;
         border-top: 1px solid $light-gray;
+        z-index: 1;
 
         #title{
             color: inherit;
@@ -47,7 +105,7 @@
             color: inherit;
             box-sizing: border-box;
             width: 100%;
-            min-height: 63vh;
+            min-height: 600px;
         }
     }
 }

@@ -39,7 +39,7 @@ export default class NotesIndex extends React.Component{
                     
                     <ul>{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul>
                 </div>
-                <EditorContainer id={id}/>
+                <EditorContainer id={id} notes={this.props.notes}/>
             </div>
            
             )

@@ -5,8 +5,7 @@ class Note < ApplicationRecord
 
     belongs_to :author,
         foreign_key: :author_id,
-        class_name: :User,
-        dependent: :destroy
+        class_name: :User
 
     # belongs_to :notebook,
     #     foreign_key: :notebook_id,

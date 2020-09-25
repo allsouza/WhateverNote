@@ -28,7 +28,7 @@ export const updateNote = note => {
 
 export const deleteNote = noteId => {
     return $.ajax({
-        ulr: `/api/notes/${noteId}`,
+        url: `/api/notes/${noteId}`,
         method: "DELETE",
     })
 }
