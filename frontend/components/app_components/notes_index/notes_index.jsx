@@ -20,6 +20,18 @@ export default class NotesIndex extends React.Component{
         )
     }
 
+    // Select first note if it has just been created
+    componentDidUpdate(prevProps){
+        const time = new Date(this.props.notes[0].created_at);
+        if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
+            const items = document.getElementById('note-list').childNodes;
+            items.forEach(item=>{
+                item.classList.remove('selected');
+            })
+            items[0].classList.add('selected');
+        }
+    }
+
     openNote(e, id){
         this.props.history.push(`/app/notes/${id}`)
         e.currentTarget.parentElement.childNodes.forEach(li=>{
@@ -39,7 +51,7 @@ export default class NotesIndex extends React.Component{
                         <p>{this.props.notes.length} notes</p>
                     </div>
                     
-                    <ul>{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul>
+                    <ul id="note-list">{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul>
                 </div>
                 {this.state.editor ? <EditorContainer id={id} notes={this.props.notes}/> : null}
             </div>
