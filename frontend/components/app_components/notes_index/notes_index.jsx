@@ -7,6 +7,7 @@ export default class NotesIndex extends React.Component{
     constructor(props){
         super(props);
         this.openNote = this.openNote.bind(this);
+        this.state = {editor: false}
     }
 
     componentDidMount(){
@@ -14,6 +15,7 @@ export default class NotesIndex extends React.Component{
             const notes = payload.notes.sort(sortByLastUptade);
             this.props.history.push(`/app/notes/${notes[0].id}`);
             document.getElementsByClassName('note-item')[0].classList.add('selected');
+            this.setState({editor: true})
             }
         )
     }
@@ -39,7 +41,7 @@ export default class NotesIndex extends React.Component{
                     
                     <ul>{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul>
                 </div>
-                <EditorContainer id={id} notes={this.props.notes}/>
+                {this.state.editor ? <EditorContainer id={id} notes={this.props.notes}/> : null}
             </div>
            
             )

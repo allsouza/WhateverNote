@@ -16,19 +16,9 @@ export default class Editor extends React.Component{
         this._handleOptionsClick = this._handleOptionsClick.bind(this);
         this.deleteNote = this.deleteNote.bind(this);
     }
-
+    
     componentDidUpdate(prevProps, prevState){
-        // if(prevState.id !== this.props.note.id){
-        //     // debugger
-        //     Object.keys(this.props.note).forEach(key=>{
-        //         this.setState({[key]:this.props.note[key]})
-        //     })
-        //     this.setState({notes: this.props.notes})
-        //     if(this.state.title === "Untitled"){
-        //         this.setState({title: ""})
-        //     }
-        // }
-
+        
         if(prevProps.location.pathname !== this.props.location.pathname){
             Object.keys(this.props.note).forEach(key=>{
                 this.setState({[key]:this.props.note[key]})
