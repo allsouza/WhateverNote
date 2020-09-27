@@ -12,7 +12,12 @@ export default class NotebookForm extends React.Component{
 
     handleChange(e){
         this.setState({name: e.target.value})
-        if(this.state.name.length > 0) this.setState({continue: true})
+        if(e.target.value.length > 0) {
+            this.setState({continue: true})
+        }
+        else{
+            this.setState({continue: false})
+        }
     }
 
     save(){
@@ -23,11 +28,11 @@ export default class NotebookForm extends React.Component{
     render(){
         return(
             <div className="notebook-form">
-                <div className="title"><h1>{this.props.formType}</h1><i onClick={this.props.closeModal} className="fas fa-times"></i></div>
+                <div><div className="title"><h1>{this.props.formType}</h1><i onClick={this.props.closeModal} className="fas fa-times"></i></div>
                 {this.props.formType === "Create new notebook" ? <p>
                     Notebooks are useful for grouping notes around a common topic.
                 </p> : null}
-                
+                </div>
                 <form >
                     <label>Name</label>
                     <input type="text" onChange={this.handleChange} value={this.state.name} placeholder="Notebook name"/>
