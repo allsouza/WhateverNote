@@ -17,7 +17,6 @@ export default function notebooksReducer(state={}, action){
             })
             return newState;
         case RECEIVE_NOTEBOOK:
-            debugger
             return Object.assign({}, state, {[action.notebook.id]: {
                     id: action.notebook.id,
                     updatedAt: action.notebook.updated_at,

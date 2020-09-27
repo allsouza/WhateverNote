@@ -1,4 +1,80 @@
 .notebooks-index{
     width: -webkit-fill-available;
     padding: 25px 30px;
+
+    table{
+        border-collapse: collapse;
+        width: -webkit-fill-available;
+        thead{
+            text-align: left;
+            background-color: $light-gray;
+            tr{
+                th:first-of-type{
+                    padding-left: 10px;
+                }
+                th:last-of-type{
+                    padding-right: 10px;
+                }
+                font-family: $body;
+                font-size: 12px;
+            }
+            border-bottom: 1px solid $border-gray;
+        }
+
+        tr{
+            height: 35px;
+            font-family: $body;
+            font-size: 14px;
+        }
+
+        
+        tr:nth-of-type(even){
+            background-color: $light-gray;
+        }
+        
+        tr:hover{
+            background-color: $border-gray;
+        }
+
+        .note{
+            .title{
+                padding-left: 45px;
+
+                i{
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        .title{
+            display: flex;
+            padding-top: 8px;
+
+            h3{
+                margin: 0;
+                font-size: 15px;
+                padding-left: 10px;
+                font-weight: normal;
+            }
+            p{
+                padding-left: 5px;
+                color: $text-gray;
+                background: inherit;
+            }
+            i{
+                background: inherit;
+                padding-left: 15px;
+                align-self: center;
+            }
+        }
+
+        .actions{
+            width: 40px;
+            text-align: right;
+        }
+
+        .title:hover{
+            cursor: pointer;
+        }
+    }
 }
