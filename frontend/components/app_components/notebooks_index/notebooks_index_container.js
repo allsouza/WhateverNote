@@ -4,8 +4,6 @@ import NotebooksIndex from './notebooks_index';
 
 const mSTP = (state, ownProps) => ({
     notebooks: Object.values(state.entities.notebooks),
-    notes: state.entities.notes,
-    users: state.entities.users
 })
 
 const mDTP = dispatch => ({

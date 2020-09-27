@@ -6,6 +6,7 @@ export default class NotebookIndexItem extends React.Component{
     constructor(props){
         super(props);
         this.state = {expanded: false}
+        this.openNotebook = this.openNotebook.bind(this);
     }
 
     toggleExpand(){
@@ -25,12 +26,18 @@ export default class NotebookIndexItem extends React.Component{
         })
     }
 
+    openNotebook(){
+        this.props.history.push(`/app/notebook/${this.props.notebook.id}/notes`)
+    }
+
     render(){
         const {notebook, notes, users} = this.props;
         return(
             <>
             <tr>
-                <td className="title">
+                <td className="title"
+                    onClick={this.openNotebook}
+                >
                     <i className="fas fa-caret-right caret"
                         onClick={(e)=>{
                             e.currentTarget.classList.toggle('expanded');

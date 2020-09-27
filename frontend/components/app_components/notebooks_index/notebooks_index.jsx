@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderContainer from './header_container';
-import NotebooksIndexItem from './notebook_index_item';
+import NotebookIndexItemContainer from './notebook_index_item_container';
+import NotebookIndexItem from './notebook_index_item';
 
 export default class NotebooksIndex extends React.Component{
     componentDidMount(){
@@ -22,12 +23,10 @@ export default class NotebooksIndex extends React.Component{
                     </thead>
                     <tbody>
                         {this.props.notebooks.map(notebook => { 
-                            return <NotebooksIndexItem 
+                            return <NotebookIndexItemContainer
                                         key={notebook.id} 
-                                        notebook={notebook} 
-                                        users={this.props.users}
-                                        notes={this.props.notes}
-                                    />
+                                        notebook={notebook}
+                            />
                         })}
 
                     </tbody>
