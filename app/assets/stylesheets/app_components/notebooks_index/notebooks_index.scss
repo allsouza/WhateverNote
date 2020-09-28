@@ -71,10 +71,102 @@
         .actions{
             width: 40px;
             text-align: right;
+            position: relative;
         }
 
         .title:hover{
             cursor: pointer;
+        }
+
+        .options{
+            background: inherit;
+            min-width: 25px;
+            text-align: center;
+            width: auto;
+            border-radius: 3px;
+            i{
+                background-color: transparent;
+                color: gray;
+                transition: color 0.5s;
+            }
+        }
+
+        .options:hover{
+            background-color: inherit;
+            cursor: pointer;
+            i{
+                color: $dark-blue;
+            }
+            .description{
+                opacity: 1;
+                z-index: 3;
+            }
+        }
+
+        .options-dropdown{
+            position: absolute;
+            z-index: 5;
+            right: 10px;
+            top: 35px;
+            width: 160px;
+            box-shadow: 0 0 5px $gray;
+            box-sizing: border-box;
+            padding: 5px 0;
+            font-family: $body;
+
+            li{
+                li{
+                    padding: 5px 20px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: $dark-gray;
+                    border:none;
+                }
+                ul{
+                    padding: 5px 0;
+                }
+                border-bottom: 1px solid $light-gray;
+            }
+
+            li:last-of-type{
+                border: none;
+            }
+
+            li:hover{
+                background-color: $light-gray;
+                cursor: pointer;
+            }
+        }
+
+        .right.description{
+            right: -55px;
+            transform: none;
+            .arrow{
+                left: 63%;
+            }
+            
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+            transform: translate(-38%, 0);
+            margin-top: 15px;
+            width: max-content;
+            padding: 12px;
+            background-color: $dark-blue;
+            color:white;
+            border-radius: 5px;
+            
+            .arrow{
+                z-index: 4;
+                position: absolute;
+                top: -5px;
+                width: 0; 
+                height: 0; 
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent; 
+                border-bottom:7px solid $dark-blue;
+                background: transparent 
+            }
         }
     }
 }

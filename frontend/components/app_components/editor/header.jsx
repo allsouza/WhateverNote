@@ -52,7 +52,7 @@ export default class Header extends React.Component{
                 </div>
                 <div className="right">
                     <button 
-                        id="note-options" 
+                        className="note-options" 
                         onClick={this._handleOptionsClick}
                         onBlur={this._handleOptionsBlur}
                         >
@@ -63,7 +63,7 @@ export default class Header extends React.Component{
 
                     </button>
                     {this.state.options ? (
-                        <ul id="options-dropdown" >
+                        <ul className="options-dropdown" >
                             <li><ul><li
                                 onClick={()=>this.props.openModal('noteInfo')}
                                 >Note info</li></ul></li>
