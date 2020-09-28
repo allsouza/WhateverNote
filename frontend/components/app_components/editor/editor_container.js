@@ -16,7 +16,7 @@ const mDTP = dispatch => {
         fetchNote: id => dispatch(fetchNote(id)),
         updateNote: note => dispatch(updateNote(note)),
         deleteNote: id => dispatch(deleteNote(id)),
-        openModal: modal => dispatch(openModal(modal))
+        openModal: (modal, info) => dispatch(openModal(modal, info))
     })
 }
 export default withRouter(connect(mSTP, mDTP)(Editor));

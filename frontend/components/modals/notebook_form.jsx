@@ -3,6 +3,7 @@ import React from 'react';
 export default class NotebookForm extends React.Component{
     constructor(props){
         super(props);
+        debugger
         this.state = Object.assign({}, props.notebook, {
             continue: false
         })

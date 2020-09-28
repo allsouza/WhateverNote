@@ -72,7 +72,7 @@ export default class Editor extends React.Component{
     render(){
         return(
             <div className="editor">
-                <Header deleteNote={this.deleteNote} formatDate={this._formatDate} openModal={this.props.openModal}/>
+                <Header deleteNote={this.deleteNote} note={this.props.note} formatDate={this._formatDate} openModal={this.props.openModal}/>
                 <form>
                     <input id="title" type="text" 
                             onChange={this.handleChange('title')} 

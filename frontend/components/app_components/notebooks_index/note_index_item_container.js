@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = dispatch => ({
     deleteNote: id => dispatch(deleteNote(id)),
-    openModal: modal => dispatch(openModal(modal))
+    openModal: (modal, info) => dispatch(openModal(modal, info))
 })
 
 export default connect(mSTP, mDTP)(NoteIndexItem);

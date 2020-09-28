@@ -4,23 +4,27 @@ import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import NoteInfo from './note_info_container';
 import NewNotebookContainer from '../modals/new_notebook_container';
+import RenameNotebookContainer from '../modals/rename_notebook_container'
 
-function Modal({modal, closeModal}){
+function Modal({modal, closeModal, info}){
 
     if(!modal) return null;
 
     let component;
     switch (modal) {
         case 'noteInfo':
-            component=<NoteInfo />
+            component=<NoteInfo info={info}/>
             break;
         case 'newNotebook':
             component=<NewNotebookContainer />
             break;
+        case 'renameNotebook':
+            component=<RenameNotebookContainer info={info}/>
+            break;
         default:
             return null;
     }
-
+    debugger
     return(
         <div className="modal-bckgrd" onClick={closeModal}>
             <div className="modal-ele" onClick={e=>e.stopPropagation()}>{component}</div>
@@ -28,9 +32,15 @@ function Modal({modal, closeModal}){
     )
 }
 
-const mSTP = state => ({
-    modal: state.ui.modal
-})
+const mSTP = state => {
+    debugger
+    if (state.ui.modal !== null){
+        return({
+            modal: state.ui.modal.type,
+            info: state.ui.modal.info
+        })
+    }
+}
 
 const mDTP = dispatch => ({
     closeModal: () => dispatch(closeModal())

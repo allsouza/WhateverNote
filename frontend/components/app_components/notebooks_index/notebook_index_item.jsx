@@ -5,12 +5,22 @@ import {formatDayMonth} from '../../../util/formats_util';
 export default class NotebookIndexItem extends React.Component{
     constructor(props){
         super(props);
-        this.state = {expanded: false}
+        this.state = {expanded: false, options: false}
         this.openNotebook = this.openNotebook.bind(this);
+        this._handleOptionsBlur = this._handleOptionsBlur.bind(this);
+        this._handleOptionsClick = this._handleOptionsClick.bind(this);
     }
 
     toggleExpand(){
         this.setState({expanded: !this.state.expanded})
+    }
+
+    _handleOptionsClick(){
+        this.setState({options: !this.state.options})
+    }
+
+    _handleOptionsBlur(){
+        setTimeout(()=>this.setState({options: false}), 250);
     }
 
     toggleCaret(e){
@@ -56,7 +66,32 @@ export default class NotebookIndexItem extends React.Component{
                     {formatDayMonth(notebook.updatedAt)}
                 </td>
                 <td className="actions">
-                {/* Action component */}
+                    <button 
+                            className="options" 
+                            onClick={this._handleOptionsClick}
+                            onBlur={this._handleOptionsBlur}
+                            >
+                            <i className="fas fa-ellipsis-h"></i>
+                            <div className='right description'>
+                            <div className="arrow"></div>
+                            More actions</div>
+
+                        </button>
+                        {this.state.options ? (
+                            <ul className="options-dropdown" >
+                                <li><ul><li
+                                    onClick={()=>{
+                                        debugger
+                                        this.props.openModal('renameNotebook', notebook)}}
+                                    >Rename notebook</li></ul></li>
+                                <li><ul><li 
+                                    onClick={()=>{
+                                    this.props.deleteNotebook(notebook.id);
+                                    this._handleOptionsBlur();
+                                    }}
+                                    >Delete notebook</li></ul></li>
+                            </ul>
+                        ) : null}   
                 </td>
             </tr>
             {this.state.expanded ? <NotesIndexItems indices={notebook.notes} notes={notes} users={users} /> : null}

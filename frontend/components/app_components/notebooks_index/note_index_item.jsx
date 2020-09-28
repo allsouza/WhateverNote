@@ -45,7 +45,7 @@ export default class NoteIndexItem extends React.Component{
                     {this.state.options ? (
                         <ul className="options-dropdown" >
                             <li><ul><li
-                                onClick={()=>this.props.openModal('noteInfo')}
+                                onClick={()=>this.props.openModal('noteInfo', note)}
                                 >Note info</li></ul></li>
                             <li><ul><li 
                                 onClick={()=>{

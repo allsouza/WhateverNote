@@ -4,11 +4,9 @@ import NoteInfo from './note_info'
 import {closeModal} from '../../actions/modal_actions';
 
 const mSTP = (state, ownProps) => {
-    const path = ownProps.location.pathname.split("/");
-    const id = path[path.length-1];
     return({
-        note: state.entities.notes[id],
-        author: state.entities.users[state.entities.notes[id].author_id]
+        note: ownProps.info,
+        author: state.entities.users[ownProps.info.author_id]
     })
 }
 
