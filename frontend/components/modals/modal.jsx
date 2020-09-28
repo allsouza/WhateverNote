@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import NoteInfo from './note_info_container';
 import NewNotebookContainer from '../modals/new_notebook_container';
-import RenameNotebookContainer from '../modals/rename_notebook_container'
+import RenameNotebookContainer from '../modals/rename_notebook_container';
+import MoveNoteContainer from './move_note_container';
 
 function Modal({modal, closeModal, info}){
 
@@ -20,6 +21,9 @@ function Modal({modal, closeModal, info}){
             break;
         case 'renameNotebook':
             component=<RenameNotebookContainer info={info}/>
+            break;
+        case 'moveNotebook':
+            component=<MoveNoteContainer info={info}/>
             break;
         default:
             return null;
