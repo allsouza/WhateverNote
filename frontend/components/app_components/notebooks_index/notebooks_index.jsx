@@ -1,7 +1,6 @@
 import React from 'react';
 import HeaderContainer from './header_container';
 import NotebookIndexItemContainer from './notebook_index_item_container';
-import NotebookIndexItem from './notebook_index_item';
 
 export default class NotebooksIndex extends React.Component{
     componentDidMount(){

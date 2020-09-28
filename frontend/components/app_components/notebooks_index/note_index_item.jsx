@@ -7,6 +7,7 @@ export default class NoteIndexItem extends React.Component{
         this.state = {option: false}
         this._handleOptionsBlur = this._handleOptionsBlur.bind(this);
         this._handleOptionsClick = this._handleOptionsClick.bind(this);
+        this.openEditor = this.openEditor.bind(this);
     }
 
     _handleOptionsClick(){
@@ -17,12 +18,18 @@ export default class NoteIndexItem extends React.Component{
         setTimeout(()=>this.setState({options: false}), 250);
     }
 
+    openEditor(){
+        this.props.history.push(`/app/editor/${this.props.note.id}`)
+    }
+
     render(){
         const {note, users} = this.props;
         return(
             <tr className="note">
-                <td className="title">
-                <i className="far fa-sticky-note"></i>{note.title}
+                <td 
+                    className="title"
+                    onClick={this.openEditor}>
+                <i className="far fa-sticky-note"></i><h3>{note.title}</h3>
                 </td>
                 <td className="created">
                 {`${users[note.author_id].first_name} ${users[note.author_id].last_name}`}

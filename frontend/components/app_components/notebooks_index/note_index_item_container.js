@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {openModal} from '../../../actions/modal_actions';
 import {deleteNote} from '../../../actions/note_actions';
 import NoteIndexItem from './note_index_item';
@@ -13,4 +14,4 @@ const mDTP = dispatch => ({
     openModal: (modal, info) => dispatch(openModal(modal, info))
 })
 
-export default connect(mSTP, mDTP)(NoteIndexItem);
+export default withRouter(connect(mSTP, mDTP)(NoteIndexItem));

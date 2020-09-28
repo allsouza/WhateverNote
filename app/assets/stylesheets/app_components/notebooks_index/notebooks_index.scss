@@ -27,7 +27,6 @@
             font-size: 14px;
         }
 
-        
         tr:nth-of-type(even){
             background-color: $light-gray;
         }
@@ -39,7 +38,9 @@
         .note{
             .title{
                 padding-left: 45px;
-
+                h3{
+                    padding: 0;
+                }
                 i{
                     padding-right: 10px;
                 }
@@ -63,8 +64,12 @@
             }
             i{
                 background: inherit;
-                padding-left: 15px;
+                padding-left: 5px;
                 align-self: center;
+            }
+            .caret{
+                padding: 5px;
+                padding-left: 15px;
             }
         }
 
@@ -76,6 +81,9 @@
 
         .title:hover{
             cursor: pointer;
+            h3{
+                text-decoration: underline;
+            }
         }
 
         .options{
@@ -108,7 +116,7 @@
             z-index: 5;
             right: 10px;
             top: 35px;
-            width: 160px;
+            width: 165px;
             box-shadow: 0 0 5px $gray;
             box-sizing: border-box;
             padding: 5px 0;

@@ -24,7 +24,7 @@ function Modal({modal, closeModal, info}){
         default:
             return null;
     }
-    debugger
+
     return(
         <div className="modal-bckgrd" onClick={closeModal}>
             <div className="modal-ele" onClick={e=>e.stopPropagation()}>{component}</div>
@@ -33,7 +33,6 @@ function Modal({modal, closeModal, info}){
 }
 
 const mSTP = state => {
-    debugger
     if (state.ui.modal !== null){
         return({
             modal: state.ui.modal.type,

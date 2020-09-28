@@ -63,9 +63,15 @@ export default class Editor extends React.Component{
     }
 
     deleteNote(){
-        const remId = this.state.noteIds.indexOf(this.state.id);
-        this.state.noteIds.splice(remId, 1)
-        this.props.history.push(`/app/notes/${this.state.noteIds[0]}`);
+        if(this.props.type === "standard")
+        {
+            const remId = this.state.noteIds.indexOf(this.state.id);
+            this.state.noteIds.splice(remId, 1)
+            this.props.history.push(`/app/notes/${this.state.noteIds[0]}`);
+        }
+        else{
+            this.props.history.push('/app/notebooks');
+        }
         this.props.deleteNote(this.state.id)
     }
 

@@ -6,9 +6,9 @@ import { openModal } from "../../../actions/modal_actions";
 
 const mSTP = (state, ownProps) => {
     return({
-        note: state.entities.notes[ownProps.id],
-        noteIds: ownProps.notes.map(note=>note.id),
-        type: "standard"
+        note: state.entities.notes[ownProps.match.params.note_id],
+        noteIds: [],
+        type: "stand-alone"
     })
 }
 
