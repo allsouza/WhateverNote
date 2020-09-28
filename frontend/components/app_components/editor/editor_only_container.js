@@ -8,13 +8,13 @@ const mSTP = (state, ownProps) => {
     return({
         note: state.entities.notes[ownProps.match.params.note_id],
         noteIds: [],
+        notebooks: state.entities.notebooks,
         type: "stand-alone"
     })
 }
 
 const mDTP = dispatch => {
     return({
-        fetchNote: id => dispatch(fetchNote(id)),
         updateNote: note => dispatch(updateNote(note)),
         deleteNote: id => dispatch(deleteNote(id)),
         openModal: (modal, info) => dispatch(openModal(modal, info))

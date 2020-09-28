@@ -3,9 +3,18 @@ import React from 'react';
 export default class Header extends React.Component{
     constructor(props){
         super(props);
-        this.state = {options: false}
+        this.state = {notebooks: this.props.notebooks, options: false};
         this._handleOptionsBlur = this._handleOptionsBlur.bind(this);
         this._handleOptionsClick = this._handleOptionsClick.bind(this);
+        this.redirect = this.redirect.bind(this);
+    }
+
+    componentDidMount(){
+        this.props.fetchNotebooks().then(payload => {
+            let notebooks = {};
+            payload.notebooks.forEach(notebook =>  notebooks[notebook.id] = notebook)
+            this.setState({notebooks});
+        })
     }
 
     sizeToggle(){
@@ -26,7 +35,14 @@ export default class Header extends React.Component{
         setTimeout(()=>this.setState({options: false}), 250);
     }
 
+    redirect(){
+        const path = `/app/notebooks/${this.props.note.notebook_id}/notes`;
+        if(this.props.match.url !== path) this.props.history.push(path);
+    }
+
     render(){
+        const {note} = this.props;
+        const notebook = Object.keys(this.state.notebooks).length > 0 ? this.state.notebooks[note.notebook_id] : {name:""};
         return(
             <div className="header">
             <div id='first-header'>
@@ -49,6 +65,17 @@ export default class Header extends React.Component{
                         <div className="arrow"></div>
                         Collapse editor</div>
                     </button>
+                    <div className="notebook-info">
+                        <button onClick={this.redirect}>
+                            <i className="fas fa-book-reader"></i>{notebook.name}
+                        </button>
+                        <button className="move">
+                            <i class="fas fa-exchange-alt"></i>
+                            <div className='center description'>
+                            <div className="arrow"></div>
+                            Move note</div>
+                        </button>
+                    </div>
                 </div>
                 <div className="right">
                     <button 

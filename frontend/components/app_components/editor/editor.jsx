@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './header';
+import HeaderContainer from './header_container';
 import Footer from './footer';
 
 export default class Editor extends React.Component{
@@ -7,7 +7,7 @@ export default class Editor extends React.Component{
         super(props);
         this.state= Object.assign({}, this.props.note,{
             noteIds: props.noteIds,
-            status: "All changes saved"
+            status: "All changes saved",
         })
         this.timeout = null;
         // Bindings
@@ -18,7 +18,6 @@ export default class Editor extends React.Component{
     }
     
     componentDidUpdate(prevProps, prevState){
-        
         if(prevProps.location.pathname !== this.props.location.pathname){
             if (typeof this.props.note !== 'undefined'){
                 Object.keys(this.props.note).forEach(key=>{
@@ -78,7 +77,10 @@ export default class Editor extends React.Component{
     render(){
         return(
             <div className="editor">
-                <Header deleteNote={this.deleteNote} note={this.props.note} formatDate={this._formatDate} openModal={this.props.openModal}/>
+                <HeaderContainer 
+                    deleteNote={this.deleteNote} 
+                    note={this.props.note} 
+                    formatDate={this._formatDate} />
                 <form>
                     <input id="title" type="text" 
                             onChange={this.handleChange('title')} 
