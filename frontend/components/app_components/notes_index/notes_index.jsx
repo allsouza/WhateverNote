@@ -11,6 +11,7 @@ export default class NotesIndex extends React.Component{
     }
 
     componentDidMount(){
+        // debugger
         if(this.props.title === "All Notes"){
             this.props.fetchNotes().then((payload)=>{
                 const notes = payload.notes.sort(sortByLastUptade);
@@ -31,6 +32,7 @@ export default class NotesIndex extends React.Component{
 
     // Select first note if it has just been created
     componentDidUpdate(prevProps){
+        // debugger
         if(this.props.notes.length > 0){
             const time = new Date(this.props.notes[0].created_at);
             if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
@@ -54,6 +56,7 @@ export default class NotesIndex extends React.Component{
     render(){
         const path = this.props.location.pathname.split('/');
         const id = path[path.length-1];
+        // debugger
         return(
             <div className="main-app">
                 <div className="notes-index">

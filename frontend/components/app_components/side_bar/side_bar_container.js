@@ -5,7 +5,8 @@ import { withRouter } from "react-router-dom";
 import { createNote } from "../../../actions/note_actions";
 
 const mSTP = state => ({
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    notes: Object.values(state.entities.notes)
 })
 
 const mDTP = dispatch => ({
