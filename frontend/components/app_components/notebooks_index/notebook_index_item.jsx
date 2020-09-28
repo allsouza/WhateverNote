@@ -27,7 +27,7 @@ export default class NotebookIndexItem extends React.Component{
     }
 
     openNotebook(){
-        this.props.history.push(`/app/notebook/${this.props.notebook.id}/notes`)
+        this.props.history.push(`/app/notebooks/${this.props.notebook.id}/notes`)
     }
 
     render(){

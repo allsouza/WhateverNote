@@ -11,29 +11,40 @@ export default class NotesIndex extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchNotes().then((payload)=>{
-            const notes = payload.notes.sort(sortByLastUptade);
-            this.props.history.push(`/app/notes/${notes[0].id}`);
-            document.getElementsByClassName('note-item')[0].classList.add('selected');
-            this.setState({editor: true})
-            }
-        )
+        if(this.props.title === "All Notes"){
+            this.props.fetchNotes().then((payload)=>{
+                const notes = payload.notes.sort(sortByLastUptade);
+                this.props.history.push(`/app/notes/${notes[0].id}`);
+                document.getElementsByClassName('note-item')[0].classList.add('selected');
+                this.setState({editor: true})
+                }
+            )
+        }
+        else{
+            this.props.fetchNotebook(this.props.match.params.notebook_id).then(() => {
+                this.props.history.push(`/app/notebooks/${this.props.notebook.id}/notes/${this.props.notes[0].id}`);
+                document.getElementsByClassName('note-item')[0].classList.add('selected');
+                this.setState({editor: true})
+            })
+        }
     }
 
     // Select first note if it has just been created
     componentDidUpdate(prevProps){
-        const time = new Date(this.props.notes[0].created_at);
-        if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
-            const items = document.getElementById('note-list').childNodes;
-            items.forEach(item=>{
-                item.classList.remove('selected');
-            })
-            items[0].classList.add('selected');
+        if(this.props.notes.length > 0){
+            const time = new Date(this.props.notes[0].created_at);
+            if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
+                const items = document.getElementById('note-list').childNodes;
+                items.forEach(item=>{
+                    item.classList.remove('selected');
+                })
+                items[0].classList.add('selected');
+            }
         }
     }
 
     openNote(e, id){
-        this.props.history.push(`/app/notes/${id}`)
+        this.props.history.push(`${this.props.match.url}/${id}`)
         e.currentTarget.parentElement.childNodes.forEach(li=>{
             li.classList.remove('selected')
         })
@@ -47,7 +58,7 @@ export default class NotesIndex extends React.Component{
             <div className="main-app">
                 <div className="notes-index">
                     <div className="header">
-                        <h1>All Notes</h1>
+                        <h1>{this.props.title}</h1>
                         <p>{this.props.notes.length} notes</p>
                     </div>
                     

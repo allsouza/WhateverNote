@@ -10,6 +10,7 @@ export function sortByLastUptade(note1, note2){
 const mSTP = (state) => {
     return({
     notes: Object.values(state.entities.notes).sort(sortByLastUptade),
+    title: "All Notes"
 })}
 
 const mDTP = dispatch => ({

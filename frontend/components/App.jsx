@@ -4,14 +4,19 @@ import NotesIndexContainer from './app_components/notes_index/notes_index_contai
 import {ProtectedRoute} from '../util/route_util';
 import Modal from './modals/modal'
 import NotebooksIndexContainer from './app_components/notebooks_index/notebooks_index_container';
+import NotebookNotesIndexContainer from './app_components/notes_index/notebook_notes_index_container';
+import { Switch } from 'react-router-dom';
 
 export default function App(){
     return(
         <div className="app">
             <Modal />
             <SidebarContainer/>
-            <ProtectedRoute path='/app/notes' component={NotesIndexContainer} />
-            <ProtectedRoute path='/app/notebooks' component={NotebooksIndexContainer} />
+            <Switch>
+                <ProtectedRoute path='/app/notes' component={NotesIndexContainer} />
+                <ProtectedRoute path='/app/notebooks/:notebook_id/notes' component={NotebookNotesIndexContainer} />
+                <ProtectedRoute path='/app/notebooks' component={NotebooksIndexContainer} />
+            </Switch>
         </div>
     )
 }

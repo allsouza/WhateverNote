@@ -32,7 +32,7 @@ export const fetchNotebooks = () => dispatch => (
 )
 
 export const fetchNotebook = id => dispatch => (
-    NotebookApiUtil.fetchNotebook(id).then( notebook => dispatch(receiveAllNotebooks(notebook)), errors => dispatch(receiveNotebookErrors(errors)))
+    NotebookApiUtil.fetchNotebook(id).then( notebook => dispatch(receiveNotebook(notebook)), errors => dispatch(receiveNotebookErrors(errors)))
 )
 
 export const createNotebook = notebook => dispatch => (

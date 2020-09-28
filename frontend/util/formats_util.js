@@ -9,3 +9,7 @@ export function formatDayMonth(dateParam){
         const date = new Date(dateParam)
         return `${months[date.getMonth()]} ${date.getDate()}`
     }
+
+export function sortByLastUptade(note1, note2){
+    return note1.updated_at <= note2.updated_at ? 1 : -1;
+}
