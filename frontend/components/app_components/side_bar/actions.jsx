@@ -14,7 +14,6 @@ export default function Actions({expand, select, expanded}){
                                         e.stopPropagation();
                                         expand("notebooks")} }
                             className="fas fa-caret-right caret"></i>
-                    {/* <i className="fas fa-caret-down"></i> */}
                     <i className="fas fa-book-open"></i>Notebooks
                 </li>
 
