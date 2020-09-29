@@ -16,14 +16,12 @@ export default class Editor extends React.Component{
         this.deleteNote = this.deleteNote.bind(this);
         this._formatDate = this._formatDate.bind(this);
     }
-
-    componentDidMount(){
+    
+    componentDidUpdate(prevProps, prevState){
         if(this.props.type === 'standard' && this.props.selectFirst){
             document.getElementsByClassName('note-item')[0].classList.add('selected');
         }
-    }
-    
-    componentDidUpdate(prevProps, prevState){
+
         if(prevProps.location.pathname !== this.props.location.pathname){
             if (typeof this.props.note !== 'undefined'){
                 Object.keys(this.props.note).forEach(key=>{

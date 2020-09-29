@@ -58,6 +58,7 @@ export default class NotesIndex extends React.Component{
 
     openNote(e, id){
         this.props.history.push(`${this.props.match.url}/${id}`)
+        this.setState({selectFirst: false})
         e.currentTarget.parentElement.childNodes.forEach(li=>{
             li.classList.remove('selected')
         })
