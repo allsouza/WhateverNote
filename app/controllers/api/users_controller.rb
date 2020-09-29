@@ -4,7 +4,6 @@ class Api::UsersController < ApplicationController
         if @user.save
             login!(@user)
             notebook = Notebook.create!(name: "My Notebook", author_id: @user.id)
-            debugger
             @user.default_notebook = notebook.id
             @user.save
             render :show

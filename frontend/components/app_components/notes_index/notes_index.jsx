@@ -11,7 +11,6 @@ export default class NotesIndex extends React.Component{
     }
 
     componentDidMount(){
-        // debugger
         if(this.props.title === "All Notes"){
             this.props.fetchNotes().then((payload)=>{
                 // const notes = payload.notes.sort(sortByLastUptade);
@@ -25,7 +24,6 @@ export default class NotesIndex extends React.Component{
             this.props.fetchNotebook(this.props.match.params.notebook_id).then((payload) => {
                 // const notes = payload.notebook.notes.sort(sortByLastUptade);
                 // this.props.history.push(`/app/notebooks/${payload.notebook.id}/notes/${notes[0].id}`);
-                // debugger
                 // document.getElementsByClassName('note-item')[0].classList.add('selected');
                 this.setState({editor: true, ready: true})
             })
@@ -34,7 +32,6 @@ export default class NotesIndex extends React.Component{
 
     // Select first note if it has just been created
     componentDidUpdate(prevProps){
-        // debugger
         if(this.props.notes.length > 0){
             const time = new Date(this.props.notes[0].created_at);
             if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
@@ -58,7 +55,6 @@ export default class NotesIndex extends React.Component{
     render(){
         const path = this.props.location.pathname.split('/');
         const id = path[path.length-1];
-        debugger
         return(<>
             {this.state.ready ? 
             <div className="main-app">

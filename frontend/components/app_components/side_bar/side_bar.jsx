@@ -36,7 +36,6 @@ export default class Sidebar extends React.Component{
     }
 
     _createNote(){
-        // debugger
         let notebook_id, route;
         let path = this.props.location.pathname.split('/');
         if(path[2] === 'notebooks'){
