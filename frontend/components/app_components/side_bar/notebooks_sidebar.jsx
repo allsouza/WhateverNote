@@ -10,7 +10,10 @@ export default class NotebooksSidebar extends React.Component{
     }
 
     openNotebook(id){
-        this.props.history.push(`/app/notebooks/${id}/notes`)
+        const target = `/app/notebooks/${id}/notes`;
+        let path = this.props.location.pathname.split('/');
+        path.pop();
+        if(path.join('/') !== target) this.props.history.push(target);
     }
 
     listNotebooks(){
