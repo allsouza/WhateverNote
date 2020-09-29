@@ -4,8 +4,12 @@ import {openModal} from '../../../actions/modal_actions';
 import {deleteNote} from '../../../actions/note_actions';
 import NoteIndexItem from './note_index_item';
 
+// const mSTP = (state, ownProps) => ({
+//     users: state.entities.users,
+//     note: ownProps.note
+// })
 const mSTP = (state, ownProps) => ({
-    users: state.entities.users,
+    users: ownProps.users,
     note: ownProps.note
 })
 

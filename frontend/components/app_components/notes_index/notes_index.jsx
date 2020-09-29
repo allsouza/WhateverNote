@@ -7,25 +7,27 @@ export default class NotesIndex extends React.Component{
     constructor(props){
         super(props);
         this.openNote = this.openNote.bind(this);
-        this.state = {editor: false}
+        this.state = {editor: false, ready:false}
     }
 
     componentDidMount(){
         // debugger
         if(this.props.title === "All Notes"){
             this.props.fetchNotes().then((payload)=>{
-                const notes = payload.notes.sort(sortByLastUptade);
-                this.props.history.push(`/app/notes/${notes[0].id}`);
-                document.getElementsByClassName('note-item')[0].classList.add('selected');
-                this.setState({editor: true})
+                // const notes = payload.notes.sort(sortByLastUptade);
+                // this.props.history.push(`/app/notes/${notes[0].id}`);
+                // document.getElementsByClassName('note-item')[0].classList.add('selected');
+                this.setState({editor: true, ready: true})
                 }
             )
         }
         else{
-            this.props.fetchNotebook(this.props.match.params.notebook_id).then(() => {
-                this.props.history.push(`/app/notebooks/${this.props.notebook.id}/notes/${this.props.notes[0].id}`);
-                document.getElementsByClassName('note-item')[0].classList.add('selected');
-                this.setState({editor: true})
+            this.props.fetchNotebook(this.props.match.params.notebook_id).then((payload) => {
+                // const notes = payload.notebook.notes.sort(sortByLastUptade);
+                // this.props.history.push(`/app/notebooks/${payload.notebook.id}/notes/${notes[0].id}`);
+                // debugger
+                // document.getElementsByClassName('note-item')[0].classList.add('selected');
+                this.setState({editor: true, ready: true})
             })
         }
     }
@@ -56,8 +58,9 @@ export default class NotesIndex extends React.Component{
     render(){
         const path = this.props.location.pathname.split('/');
         const id = path[path.length-1];
-        // debugger
-        return(
+        debugger
+        return(<>
+            {this.state.ready ? 
             <div className="main-app">
                 <div className="notes-index">
                     <div className="header">
@@ -69,7 +72,8 @@ export default class NotesIndex extends React.Component{
                 </div>
                 {this.state.editor ? <EditorContainer id={id} notes={this.props.notes}/> : null}
             </div>
-           
+            : null}
+            </>
             )
     }
 }

@@ -36,9 +36,19 @@ export default class Sidebar extends React.Component{
     }
 
     _createNote(){
-        debugger
-        this.props.createNote({title: "Untitled", body: "", notebook_id:this.props.user.default_notebook, author_id:this.props.user.id}).then(payload=>{
-            this.props.history.push(`/app/notes/${payload.note.id}`)
+        // debugger
+        let notebook_id, route;
+        let path = this.props.location.pathname.split('/');
+        if(path[2] === 'notebooks'){
+            notebook_id = path[3];
+            route = `/app/notebooks/${notebook_id}/notes`;
+        }
+        else{
+            notebook_id = this.props.user.default_notebook;
+            route = `/app/notes`
+        }
+        this.props.createNote({title: "Untitled", body: "", notebook_id: notebook_id, author_id:this.props.user.id}).then(payload=>{
+            this.props.history.push(`${route}/${payload.note.id}`)
         })
     }
     

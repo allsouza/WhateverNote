@@ -15,7 +15,7 @@ export default function notebooksReducer(state={}, action){
                     notes: notebook.notes.map(note => note.id)
                 }
             })
-            return newState;
+            return Object.assign({}, state, newState);
         case RECEIVE_NOTEBOOK:
             return Object.assign({}, state, {[action.notebook.id]: {
                     id: action.notebook.id,

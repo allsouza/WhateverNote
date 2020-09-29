@@ -7,7 +7,8 @@ import {sortByLastUptade} from '../../../util/formats_util';
 
 const mSTP = (state, ownProps) =>{
     return({
-        notes: Object.values(state.entities.notes).sort(sortByLastUptade),
+        // notes: Object.values(state.entities.notes).sort(sortByLastUptade),
+        notes: state.entities.notes,
         users: state.entities.users,
         notebook: ownProps.notebook
 })}
