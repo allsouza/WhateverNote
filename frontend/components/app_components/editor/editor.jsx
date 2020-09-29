@@ -76,7 +76,8 @@ export default class Editor extends React.Component{
 
     render(){
         return(
-            <div className="editor">
+            <>
+            {this.props.note ? <div className="editor">
                 <HeaderContainer 
                     deleteNote={this.deleteNote} 
                     note={this.props.note} 
@@ -96,7 +97,8 @@ export default class Editor extends React.Component{
                     ></textarea>
                 </form>
                 <Footer status={this.state.status} />
-            </div>
+            </div> : null}
+            </>
         )
     }
 }

@@ -42,7 +42,6 @@ export default class NotebookIndexItem extends React.Component{
 
     render(){
         const {notebook, notes, users} = this.props;
-        debugger
         return(
             <>
             <tr>
