@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => {
         note: state.entities.notes[ownProps.id],
         noteIds: ownProps.notes.map(note=>note.id),
         notebooks: state.entities.notebooks,
-        type: "standard"
+        type: "standard",
+        selectFirst: ownProps.selectFirst
     })
 }
 
