@@ -91,7 +91,7 @@ export default class Header extends React.Component{
                         <button 
                             onClick={() => this.props.openModal('moveNotebook', note)}
                             className="move">
-                            <i className="fas fa-exchange-alt"></i>
+                            <i class="fas fa-exchange-alt"></i>
                             <div className='center description'>
                             <div className="arrow"></div>
                             Move note</div>

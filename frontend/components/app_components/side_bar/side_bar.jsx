@@ -54,7 +54,7 @@ export default class Sidebar extends React.Component{
                 break;
         
             default:
-                if(this.props.location.pathname.split("/")[2] !== 'notes') this.props.history.push(`/app/notes/`)
+                this.props.history.push('/app/notes')
                 break;
         }
     }

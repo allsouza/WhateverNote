@@ -6,8 +6,7 @@ import { createNote } from "../../../actions/note_actions";
 import { fetchNotebooks } from "../../../actions/notebook_actions";
 
 const mSTP = state => ({
-    user: state.entities.users[state.session.id],
-    notes: Object.values(state.entities.notes)
+    user: state.entities.users[state.session.id]
 })
 
 const mDTP = dispatch => ({

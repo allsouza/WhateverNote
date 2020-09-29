@@ -10,28 +10,20 @@ export default class MoveNote extends React.Component{
     }
 
     select(e, id){
-        const notebooks = Array.from(document.getElementsByClassName('move-notebook'));
+        notebooks = Array.from(document.getElementsByClassName('move-notebook'));
         notebooks.forEach(notebook => notebook.classList.remove('selected'));
-        const checkmarks = Array.from(document.getElementsByClassName('checkmark'));
-        checkmarks.forEach(check => check.classList.remove('selected'));
         e.currentTarget.classList.add('selected');
-        e.currentTarget.children[0].classList.add('selected');
         this.setState({notebook_id: id});
-        if(id !== this.props.note.notebook_id){
-            this.setState({move: true})
-        } 
-        else{
-            this.setState({move:false})
-        }
+        if(id !== note.notebook_id) this.setState({move: true})
     }
 
     save(){
         this.props.updateNote(this.state)
-        this.props.closeModal();
     }
 
     render(){
         const {closeModal, notebooks} = this.props;
+        // debugger
         return(
             <div className="move-note">
                 <div className="header"><h1>Move note to...</h1>
@@ -45,9 +37,8 @@ export default class MoveNote extends React.Component{
                                 className={`move-notebook ${notebook.id === this.state.notebook_id ? "selected" : ""}`}
                                 onClick={e => this.select(e, notebook.id)}
                             >
-                            <i class="fas fa-check checkmark"></i>
                             <i className="fas fa-book-open"></i>
-                            <h2>{notebook.name}</h2>{notebook.id === this.props.note.notebook_id ? <p>(current)</p> : null}
+                            <h2>{notebook.name}</h2>{notebook.id === this.state.notebook_id ? <p>(current)</p> : null}
                             </li>
                         )
                     })}
