@@ -5,7 +5,6 @@ import NotesIndex from "./notes_index"
 import {sortByLastUptade} from '../../../util/formats_util';
 
 const mSTP = (state, ownProps) => {
-    debugger
     if(Object.keys(state.entities.notebooks).length > 0){
         const notebookNotes = state.entities.notebooks[ownProps.match.params.notebook_id].notes;
         const notes = Object.values(state.entities.notes).filter(note => note.id === ownProps.match.params.notebook_id).sort(sortByLastUptade);
