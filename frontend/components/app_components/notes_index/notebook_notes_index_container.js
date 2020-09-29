@@ -7,7 +7,7 @@ import {sortByLastUptade} from '../../../util/formats_util';
 const mSTP = (state, ownProps) => {
     if(Object.keys(state.entities.notebooks).length > 0){
         const notebookNotes = state.entities.notebooks[ownProps.match.params.notebook_id].notes;
-        const notes = Object.values(state.entities.notes).filter(note => note.id === ownProps.match.params.notebook_id).sort(sortByLastUptade);
+        const notes = Object.values(state.entities.notes).filter(note => notebookNotes.includes(note.id)).sort(sortByLastUptade);
         return({
             notes: notes,
             notebook: state.entities.notebooks[ownProps.match.params.notebook_id],
@@ -19,7 +19,6 @@ const mSTP = (state, ownProps) => {
             notes: Object.values(state.entities.notes)
         })
     }
-    
 }
 
 const mDTP = dispatch => ({

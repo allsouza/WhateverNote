@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { openModal } from "../../../actions/modal_actions";
 
 const mSTP = (state, ownProps) => {
+    // debugger
     return({
         note: state.entities.notes[ownProps.id],
         noteIds: ownProps.notes.map(note=>note.id),

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import {fetchNotebooks} from '../../../actions/notebook_actions';
 import NotebooksSidebar from './notebooks_sidebar';
 
@@ -11,4 +10,4 @@ const mDTP = dispatch => ({
     fetchNotebooks: () => dispatch(fetchNotebooks())
 })
 
-export default withRouter(connect(mSTP, mDTP)(NotebooksSidebar));
+export default connect(mSTP, mDTP)(NotebooksSidebar)

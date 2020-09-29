@@ -1,17 +1,13 @@
 import React from 'react';
 
 export default class NotebooksSidebar extends React.Component{
-    constructor(props){
-        super(props);
-        this.openNotebook = this.openNotebook.bind(this);
-    }
 
     componentDidMount(){
         this.props.fetchNotebooks();
     }
 
     openNotebook(id){
-        this.props.history.push(`/app/notebooks/${id}/notes`);
+        window.alert(`Will open notebook ${id}`);
     }
 
     listNotebooks(){
