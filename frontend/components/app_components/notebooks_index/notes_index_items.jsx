@@ -1,14 +1,12 @@
 import React from 'react';
 import NoteIndexItemContainer from './note_index_item_container';
 
-export default function NotesIndexItems({indices, notes, users}){
+export default function NotesIndexItems({notes, users}){
     return(
         <>
-            {indices.map(noteId => {
-                debugger
-                const note = notes[noteId];
+            {notes.map(note => {
                 return(
-                    <NoteIndexItemContainer  key={noteId} note={note} users={users}/>
+                    <NoteIndexItemContainer  key={note.id} note={note} users={users}/>
                 )
             })}
         </>

@@ -1,6 +1,6 @@
 import React from 'react';
 import NotesIndexItems from './notes_index_items';
-import {formatDayMonth} from '../../../util/formats_util';
+import {formatDayMonth, sortByLastUptade} from '../../../util/formats_util';
 
 export default class NotebookIndexItem extends React.Component{
     constructor(props){
@@ -42,6 +42,8 @@ export default class NotebookIndexItem extends React.Component{
 
     render(){
         const {notebook, notes, users} = this.props;
+        const sortedNotes = Object.values(notes).filter(note => notebook.notes.includes(note.id))
+                        .sort((note1, note2)=>{return note1.updated_at <= note2.updated_at ? 1 : -1})
         return(
             <>
             <tr>
@@ -92,7 +94,7 @@ export default class NotebookIndexItem extends React.Component{
                         ) : null}   
                 </td>
             </tr>
-            {this.state.expanded ? <NotesIndexItems indices={notebook.notes} notes={notes} users={users} /> : null}
+            {this.state.expanded ? <NotesIndexItems notes={sortedNotes} users={users} /> : null} 
             </>
         )
     }
