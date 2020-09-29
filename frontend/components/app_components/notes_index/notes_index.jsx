@@ -22,7 +22,7 @@ export default class NotesIndex extends React.Component{
         else{
             this.props.fetchNotebook(this.props.match.params.notebook_id).then((payload) => {
                 const notes = payload.notebook.notes.sort(sortByLastUptade);
-                this.props.history.push(`/app/notebooks/${payload.notebook.id}/notes/${notes[0].id}`);
+                if(notes.length > 0) this.props.history.push(`/app/notebooks/${payload.notebook.id}/notes/${notes[0].id}`);
                 this.setState({editor: true, ready: true})
             })
         }

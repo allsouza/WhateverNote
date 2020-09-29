@@ -5,11 +5,13 @@ class User < ApplicationRecord
 
     has_many :notes,
         foreign_key: :author_id,
-        class_name: :Note
+        class_name: :Note,
+        dependent: :destroy
 
     has_many :notebooks,
         foreign_key: :author_id,
-        class_name: :Notebook
+        class_name: :Notebook,
+        dependent: :destroy
 
     after_initialize :ensure_session_token
 
