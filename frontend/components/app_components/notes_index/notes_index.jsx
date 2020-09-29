@@ -13,8 +13,8 @@ export default class NotesIndex extends React.Component{
     componentDidMount(){
         if(this.props.title === "All Notes"){
             this.props.fetchNotes().then((payload)=>{
-                // const notes = payload.notes.sort(sortByLastUptade);
-                // this.props.history.push(`/app/notes/${notes[0].id}`);
+                const notes = payload.notes.sort(sortByLastUptade);
+                this.props.history.push(`/app/notes/${notes[0].id}`);
                 // document.getElementsByClassName('note-item')[0].classList.add('selected');
                 this.setState({editor: true, ready: true})
                 }
@@ -22,8 +22,8 @@ export default class NotesIndex extends React.Component{
         }
         else{
             this.props.fetchNotebook(this.props.match.params.notebook_id).then((payload) => {
-                // const notes = payload.notebook.notes.sort(sortByLastUptade);
-                // this.props.history.push(`/app/notebooks/${payload.notebook.id}/notes/${notes[0].id}`);
+                const notes = payload.notebook.notes.sort(sortByLastUptade);
+                this.props.history.push(`/app/notebooks/${payload.notebook.id}/notes/${notes[0].id}`);
                 // document.getElementsByClassName('note-item')[0].classList.add('selected');
                 this.setState({editor: true, ready: true})
             })
@@ -33,6 +33,7 @@ export default class NotesIndex extends React.Component{
     // Select first note if it has just been created
     componentDidUpdate(prevProps){
         if(this.props.notes.length > 0){
+            debugger
             const time = new Date(this.props.notes[0].created_at);
             if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
                 const items = document.getElementById('note-list').childNodes;
