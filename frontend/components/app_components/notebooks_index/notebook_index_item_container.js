@@ -3,11 +3,11 @@ import { withRouter } from "react-router-dom"
 import { openModal } from "../../../actions/modal_actions"
 import NotebookIndexItem from "./notebook_index_item"
 import {deleteNotebook} from '../../../actions/notebook_actions';
+import {sortByLastUptade} from '../../../util/formats_util';
 
 const mSTP = (state, ownProps) =>{
-    debugger
     return({
-        notes: state.entities.notes,
+        notes: Object.values(state.entities.notes).sort(sortByLastUptade),
         users: state.entities.users,
         notebook: ownProps.notebook
 })}
