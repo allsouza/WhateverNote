@@ -72,7 +72,9 @@ export default class Editor extends React.Component{
         {
             const remId = this.state.noteIds.indexOf(this.state.id);
             this.state.noteIds.splice(remId, 1)
-            this.props.history.push(`/app/notes/${this.state.noteIds[0]}`);
+            let path = this.props.location.pathname.split('/');
+            path.pop();
+            this.props.history.push(`${path.join('/')}/${this.state.noteIds[0]}`);
         }
         else{
             this.props.history.push('/app/notebooks');
