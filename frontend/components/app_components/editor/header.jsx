@@ -7,6 +7,7 @@ export default class Header extends React.Component{
         this._handleOptionsBlur = this._handleOptionsBlur.bind(this);
         this._handleOptionsClick = this._handleOptionsClick.bind(this);
         this.redirect = this.redirect.bind(this);
+        this.deleteNote = this.deleteNote.bind(this);
     }
 
     componentDidMount(){
@@ -15,6 +16,10 @@ export default class Header extends React.Component{
             payload.notebooks.forEach(notebook =>  notebooks[notebook.id] = notebook)
             this.setState({notebooks});
         })
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timeout)
     }
 
     sizeToggle(){
@@ -32,7 +37,15 @@ export default class Header extends React.Component{
     }
 
     _handleOptionsBlur(){
-        setTimeout(()=>this.setState({options: false}), 250);
+        this.timeout = setTimeout(()=>this.setState({options: false}), 250);
+    }
+
+    deleteNote(){
+        const path = this.props.location.pathname.split('/');
+        path.pop();
+        // debugger
+        this.props.deleteNote(this.props.note.id);
+        this.props.history.push(path.join('/'));
     }
 
     redirect(){
@@ -41,9 +54,15 @@ export default class Header extends React.Component{
     }
 
     render(){
-        const {note} = this.props;
-        const notebook = Object.keys(this.state.notebooks).length > 0 ? this.state.notebooks[note.notebook_id] : {name:""};
+        let note = {};
+        let notebook = {name:"This didnt work"};
+        if(typeof this.props.note !== 'undefined'){
+            note = this.props.note;
+            notebook = Object.keys(this.state.notebooks).length > 0 ? this.state.notebooks[note.notebook_id] : {name:""};
+        }
         return(
+            <>
+            {typeof this.props.note !== 'undefined' ?
             <div className="header">
             <div id='first-header'>
                 <div className="left">
@@ -96,10 +115,7 @@ export default class Header extends React.Component{
                             <li><ul><li
                                 onClick={()=>this.props.openModal('noteInfo', this.props.note)}
                                 >Note info</li></ul></li>
-                            <li><ul><li onClick={()=>{
-                                this.props.deleteNote();
-                                this._handleOptionsBlur();
-                                }}>Delete note</li></ul></li>
+                            <li><ul><li onClick={this.deleteNote}>Delete note</li></ul></li>
                         </ul>
                     ) : null}
                 </div>
@@ -113,7 +129,8 @@ export default class Header extends React.Component{
                 </nav>
             </div>
         </div>
-        )
+        : null }
+        </>)
     }
 }
 

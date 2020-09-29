@@ -4,7 +4,7 @@ class Api::NotesController < ApplicationController
     end
 
     def index
-        @notes = Note.all
+        @notes = Note.where(author_id: current_user.id)
     end
 
     def create

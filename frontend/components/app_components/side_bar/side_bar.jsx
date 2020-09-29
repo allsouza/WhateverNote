@@ -1,4 +1,5 @@
 import React from 'react';
+import { fetchNotebooks } from '../../../actions/notebook_actions';
 import Actions from './actions';
 import UserDropdown from './user-dropdown';
 
@@ -15,6 +16,7 @@ export default class Sidebar extends React.Component{
 
     componentDidMount(){
         this.dropdown = document.getElementsByClassName('user-dropdown')[0];
+        this.props.fetchNotebooks();
     }
 
     _displayUserDropdown(){
@@ -36,8 +38,12 @@ export default class Sidebar extends React.Component{
     }
 
     _createNote(){
-        this.props.createNote({title: "Untitled", body: "", notebook_id:1, author_id:this.props.user.id}).then(payload=>{
-            this.props.history.push(`/app/notes/${payload.note.id}`)
+        let path = this.props.location.pathname.split('/');
+        let notebook_id = (path[2] === 'notebooks') ? path[3] : this.props.user.default_notebook;
+       
+        this.props.createNote({title: "Untitled", body: "", notebook_id: notebook_id, author_id:this.props.user.id}).then(payload=>{
+            path[2] === 'notebooks' ? this.props.history.push(`/app/notebooks/${notebook_id}/notes/${payload.note.id}`) :
+                                        this.props.history.push(`app/notes/${payload.note.id}`)
         })
     }
     

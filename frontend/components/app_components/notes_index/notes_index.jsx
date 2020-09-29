@@ -22,8 +22,10 @@ export default class NotesIndex extends React.Component{
             )
         }
         else{
-            this.props.fetchNotebook(this.props.match.params.notebook_id).then(() => {
-                this.props.history.push(`/app/notebooks/${this.props.notebook.id}/notes/${this.props.notes[0].id}`);
+            // debugger
+            const notebook_id = this.props.match.params.notebook_id;
+            this.props.fetchNotebook(notebook_id).then(() => {
+                this.props.history.push(`/app/notebooks/${notebook_id}/notes/${this.props.notes[0].id}`);
                 document.getElementsByClassName('note-item')[0].classList.add('selected');
                 this.setState({editor: true})
             })
@@ -35,7 +37,8 @@ export default class NotesIndex extends React.Component{
         // debugger
         if(this.props.notes.length > 0){
             const time = new Date(this.props.notes[0].created_at);
-            if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
+            if((new Date()-time) < 1000){ //&& prevProps.location.pathname === this.props.location.pathname){
+                debugger
                 const items = document.getElementById('note-list').childNodes;
                 items.forEach(item=>{
                     item.classList.remove('selected');

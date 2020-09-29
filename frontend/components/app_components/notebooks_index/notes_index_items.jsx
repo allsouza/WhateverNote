@@ -7,7 +7,7 @@ export default function NotesIndexItems({indices, notes}){
             {indices.map(noteId => {
                 const note = notes[noteId];
                 return(
-                    <NoteIndexItemContainer  key={noteId} note={note} />
+                    <NoteIndexItemContainer key={noteId} note={note} />
                 )
             })}
         </>
