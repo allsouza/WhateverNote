@@ -4,7 +4,7 @@ class Api::NotebooksController < ApplicationController
     end
 
     def index
-        @notebooks = Notebook.all.includes(:notes)
+        @notebooks = Notebook.all.includes(:notes).where(author_id: current_user.id)
     end
 
     def create

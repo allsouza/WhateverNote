@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-User.destroy_all
 Note.destroy_all
 Notebook.destroy_all
+User.destroy_all
 
 users = User.create!([
     {email:'dori@coralreef.au', password:"iforgot", first_name:"Dori", last_name:"Tang", user_icon: "dori"}
@@ -18,6 +18,9 @@ users = User.create!([
 notebooks = Notebook.create!([
     {name:"My Notebook", author_id:users[0].id}
 ])
+
+users[0].default_notebook=notebooks[0].id
+users[0].save
 
 notes = Note.create!([
     {title:"Things I said", 
