@@ -35,6 +35,7 @@
 
     form{
         display: flex;
+        flex: auto;
         flex-direction: column;
         padding-left: 40px;
         padding-top: 31px;
@@ -54,13 +55,18 @@
             border: none;
         }
 
+        .quill{
+            max-height: -webkit-fill-available;
+            flex: 1;
+        }
+        
         .ql-editor{
             height: -webkit-fill-available;
             padding-top: 5px;
             padding-left: 0;
             color: inherit;
             box-sizing: border-box;
-            width: 100%;
+            width: 122vh;
             font-family: $body;
             font-size: 14px;
             line-height: 1.5;

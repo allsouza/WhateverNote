@@ -30,7 +30,6 @@ export const formats = [
     "image",
     "color",
     "video",
-    "code-block"
 ]
 
 export const modules = {
@@ -83,11 +82,6 @@ export const MyToolbar = () => (
             <button className="ql-link" />
             <button className="ql-image" />
             <button className="ql-video" />
-        </span>
-
-        <span className="ql-formats">
-            <button className="ql-code-block" />
-            <button className="ql-clean" />
         </span>
     </div>
 )

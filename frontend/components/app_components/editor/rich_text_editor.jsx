@@ -20,7 +20,7 @@ export default class RichTextEditor extends React.Component{
     componentWillUnmount(){
         this.hideToolbar();
     }
-    
+
     componentDidUpdate(prevProps, prevState){
         console.log("editor is running")
         if(this.props.type === 'standard' && this.props.selectFirst){
@@ -85,12 +85,20 @@ export default class RichTextEditor extends React.Component{
         eles[0].classList.add('active');
     }
 
+    _formatDate(){
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        const date = new Date(this.state.updated_at)
+        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+    }
+
     render(){
         return(
             <div className="rich-text-editor" >
-                    <HeaderContainer note={this.props.note}/>
+                    <HeaderContainer 
+                        deleteNote={this.deleteNote} 
+                        note={this.props.note} />
                 <div className='toolbar-field'>
-                    <p className="display active">Last edited on somedate</p>
+                    <p className="display active">Last edited on {this._formatDate()}</p>
                     <MyToolbar onClick={this.showToolbar}/>
                 </div>
                 <form>
@@ -103,7 +111,7 @@ export default class RichTextEditor extends React.Component{
                     <ReactQuill value={this.state.body}
                                 onChange={this.handleBodyChange}
                                 onFocus={this.showToolbar}
-                                on
+                                onBlur={this.save}
                                 theme="snow"
                                 modules={modules}
                                 formats={formats}
