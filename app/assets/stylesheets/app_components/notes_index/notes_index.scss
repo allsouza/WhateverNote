@@ -1,6 +1,7 @@
 .notes-index{
     display: block;
-    width: 330px;
+    min-width: 330px;
+    max-width: 330px;
     background-color: $lightest-blue;
     overflow: auto;
     border-right: 1px solid $light-gray;
