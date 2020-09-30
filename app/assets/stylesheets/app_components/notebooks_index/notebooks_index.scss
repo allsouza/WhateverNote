@@ -8,6 +8,9 @@
         thead{
             text-align: left;
             background-color: $light-gray;
+            .title{
+                width: 200px;
+            }
             tr{
                 th:first-of-type{
                     padding-left: 10px;
@@ -50,7 +53,7 @@
         .title{
             display: flex;
             padding-top: 8px;
-
+           
             h3{
                 margin: 0;
                 font-size: 15px;
