@@ -34,9 +34,6 @@ export default class Sidebar extends React.Component{
     }
 
     _select(e){
-        // const actions = document.getElementsByClassName('action');
-        // Array.from(actions).forEach(action=>{action.classList.remove('selected')});
-        // e.currentTarget.classList.add('selected');
         this.selectByPath();
         this._redirect(e.currentTarget.id)
     }
@@ -44,14 +41,13 @@ export default class Sidebar extends React.Component{
     selectByPath(){
         let path = this.props.location.pathname.split('/').filter(ele => ele !== "");
         const actions = Array.from(document.getElementsByClassName('action'))
-        if(path.length === 2){
+        if(path.length <= 3){
             actions.forEach(action => {
                 action.classList.remove('selected');
                 if(action.id === path[1]) action.classList.add('selected')
             })
         }
         else if(path[1] === 'notebooks'){
-            // debugger
             actions.forEach(action => {
                 action.classList.remove('selected');
                 if(action.id === `notebook${path[2]}`) action.classList.add('selected')

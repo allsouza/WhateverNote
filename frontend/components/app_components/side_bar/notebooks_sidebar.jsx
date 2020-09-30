@@ -13,8 +13,10 @@ export default class NotebooksSidebar extends React.Component{
         const target = `/app/notebooks/${id}/notes`;
         let path = this.props.location.pathname.split('/');
         path.pop();
-        if(path.join('/') !== target) this.props.history.push(target);
-        
+        if(path.join('/') !== target) {
+            this.props.fetchNotebook(id).then(() => {this.props.history.push(target);
+            })
+        }
     }
 
     listNotebooks(){

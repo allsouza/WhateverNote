@@ -26,21 +26,26 @@ export default class NotesIndex extends React.Component{
                 this.setState({editor: true, ready: true})
             })
         }
+        this.setState({selectFirst: true})
     }
 
     componentDidUpdate(prevProps){
         if(this.props.notes.length > 0){
+            // debugger
+            if(!this.state.editor){
+                this.setState({editor: true})
+            } 
             // Appropriate loading of components
             if(prevProps.location.pathname !== this.props.location.pathname){
                 const prev = prevProps.location.pathname.split('/').filter(ele => ele !== "");
                 if(prev.length === 4 || prev.length === 2){
                     this.setState({selectFirst: true})
                 }
-                else if(prev.length === 5 && prev[2] !== this.props.location.pathname.split('/')[3]){
-                    this.props.history.push(`${this.props.location.pathname}/${this.props.notes[0].id}`);
-                }
                 else{
                     this.setState({selectFirst: false})
+                }
+                if(prev.length > 3 && prev[2] !== this.props.location.pathname.split('/')[3]){
+                    this.props.history.push(`${this.props.location.pathname}/${this.props.notes[0].id}`);
                 }
             }
 
@@ -68,6 +73,7 @@ export default class NotesIndex extends React.Component{
     render(){
         const path = this.props.location.pathname.split('/');
         const id = path[path.length-1];
+        console.log(this.state.editor);
         return(<>
             {this.state.ready ? 
             <div className="main-app">
