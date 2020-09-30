@@ -11,9 +11,8 @@
         padding-top: 31px;
         color: $dark-gray;
         border-top: 1px solid $light-gray;
-        z-index: 1;
         height: -webkit-fill-available;
-        overflow: hidden;
+        // overflow: hidden;
         font-family: $body;
 
         #title{
