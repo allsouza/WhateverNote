@@ -1,4 +1,4 @@
-.editor{
+.rich-text-editor{
     .header{
         position: relative;
 
@@ -207,31 +207,6 @@
             }
         }
 
-        #toolbar-field{
-            height: 30px;
-            padding-left: 20px;
-
-            .active{
-                display: block;
-            }
-    
-            img{
-                height: 25px;
-                max-width: 90%;
-                position: absolute;
-            }
-
-            p, nav{
-                display: none;
-            }
-            
-            p{
-                margin-bottom: 10px;
-                font-family: $body;
-                font-size: 13px;
-                color: $gray;
-            }
-        }
     }
     
 }
