@@ -14,13 +14,16 @@ export default class NotebooksSidebar extends React.Component{
         let path = this.props.location.pathname.split('/');
         path.pop();
         if(path.join('/') !== target) this.props.history.push(target);
+        
     }
 
     listNotebooks(){
         return this.props.notebooks.map(notebook => {
         return(
-            <li key={notebook.id}
-                className="action" onClick={() => this.openNotebook(notebook.id)}>
+            <li key={notebook.id} id={`notebook${notebook.id}`}
+                className="action" onClick={() => {
+                                                    this.props.select();
+                                                    this.openNotebook(notebook.id)}}>
                 <i className="fas fa-book-reader"></i>{notebook.name}
            </li>
         )})

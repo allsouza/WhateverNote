@@ -1,14 +1,14 @@
 import React from 'react';
 import NotebooksSidebar from './notebooks_sidebar_container';
 
-export default function Actions({expand, select, expanded}){
+export default function Actions({expand, select, expanded, selectByPath}){
         
     return(
         <ul className="actions">
-                <li onClick={select} id="NotesIndex" className="action selected">
+                <li onClick={select} id="notes" className="action">
                     <i className="fas fa-caret-right invisible"></i><i className="fas fa-sticky-note"></i>All Notes
                 </li>   
-                <li onClick={select} id="NotebooksIndex" className="action">
+                <li onClick={select} id="notebooks" className="action">
                     <i onClick={ e =>{  e.currentTarget.classList.toggle('expanded');
                                         toggleCaret();
                                         e.stopPropagation();
@@ -18,7 +18,7 @@ export default function Actions({expand, select, expanded}){
                 </li>
 
                 {expanded === "notebooks" ? <li className="expanded-sidebar">
-                    <NotebooksSidebar /> 
+                    <NotebooksSidebar select={selectByPath}/> 
                 </li>: null}                   
         </ul>
     )

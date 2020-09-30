@@ -10,11 +10,16 @@ export default class Sidebar extends React.Component{
         this._hideUserDropdown = this._hideUserDropdown.bind(this);
         this._select = this._select.bind(this);
         this._createNote = this._createNote.bind(this);
+        this.selectByPath = this.selectByPath.bind(this);
         this.dropdown = "";
     }
 
     componentDidMount(){
         this.dropdown = document.getElementsByClassName('user-dropdown')[0];
+    }
+
+    componentDidUpdate(){
+        this.selectByPath()
     }
 
     _displayUserDropdown(){
@@ -29,10 +34,29 @@ export default class Sidebar extends React.Component{
     }
 
     _select(e){
-        const actions = document.getElementsByClassName('action');
-        Array.from(actions).forEach(action=>{action.classList.remove('selected')});
-        e.currentTarget.classList.add('selected');
+        // const actions = document.getElementsByClassName('action');
+        // Array.from(actions).forEach(action=>{action.classList.remove('selected')});
+        // e.currentTarget.classList.add('selected');
+        this.selectByPath();
         this._redirect(e.currentTarget.id)
+    }
+
+    selectByPath(){
+        let path = this.props.location.pathname.split('/').filter(ele => ele !== "");
+        const actions = Array.from(document.getElementsByClassName('action'))
+        if(path.length === 2){
+            actions.forEach(action => {
+                action.classList.remove('selected');
+                if(action.id === path[1]) action.classList.add('selected')
+            })
+        }
+        else if(path[1] === 'notebooks'){
+            // debugger
+            actions.forEach(action => {
+                action.classList.remove('selected');
+                if(action.id === `notebook${path[2]}`) action.classList.add('selected')
+            })
+        }
     }
 
     _createNote(){
@@ -53,7 +77,7 @@ export default class Sidebar extends React.Component{
     
     _redirect(component){
         switch (component) {
-            case "NotebooksIndex":
+            case "notebooks":
                 this.props.history.push('/app/notebooks')
                 break;
         
@@ -89,7 +113,7 @@ export default class Sidebar extends React.Component{
                 
                 <button onClick={this._createNote}><i className="fas fa-plus"></i>New Note</button>
 
-                <Actions select={this._select} expand={this._expand.bind(this)} expanded={this.state.expanded}/>
+                <Actions select={this._select} selectByPath={this.selectByPath} expand={this._expand.bind(this)} expanded={this.state.expanded}/>
             </div>
         )
     }
