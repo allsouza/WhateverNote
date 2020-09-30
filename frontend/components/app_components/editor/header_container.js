@@ -2,7 +2,8 @@ import { connect } from "react-redux"
 import Header from "./header"
 import {fetchNotebooks} from '../../../actions/notebook_actions';
 import { withRouter } from "react-router-dom";
-const { openModal } = require("../../../actions/modal_actions")
+const { openModal } = require("../../../actions/modal_actions");
+import EditorHeader from './editor_header';
 
 const mSTP = (state, ownProps) => {
     return({
@@ -17,4 +18,5 @@ const mDTP = dispatch => ({
     fetchNotebooks: () => dispatch(fetchNotebooks())
 })
 
-export default withRouter(connect(mSTP, mDTP)(Header));
+// export default withRouter(connect(mSTP, mDTP)(Header));
+export default withRouter(connect(mSTP, mDTP)(EditorHeader));
