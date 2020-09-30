@@ -12,12 +12,6 @@
             display: block;
         }
 
-        // img{
-        //     height: 25px;
-        //     max-width: 90%;
-        //     position: absolute;
-        // }
-
         p, div{
             display: none;
         }
@@ -27,6 +21,15 @@
             font-family: $body;
             font-size: 13px;
             color: $gray;
+        }
+
+        div{
+            height: 40px;
+        }
+
+        .ql-toolbar{
+            border: none;
+            padding: 0;
         }
     }
 
