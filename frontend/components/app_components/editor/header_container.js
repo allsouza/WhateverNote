@@ -18,5 +18,5 @@ const mDTP = dispatch => ({
     fetchNotebooks: () => dispatch(fetchNotebooks())
 })
 
-// export default withRouter(connect(mSTP, mDTP)(Header));
-export default withRouter(connect(mSTP, mDTP)(EditorHeader));
+export default withRouter(connect(mSTP, mDTP)(Header));
+// export default withRouter(connect(mSTP, mDTP)(EditorHeader));

@@ -22,5 +22,5 @@ const mDTP = dispatch => {
         openModal: (modal, info) => dispatch(openModal(modal, info))
     })
 }
-// export default withRouter(connect(mSTP, mDTP)(Editor));
-export default withRouter(connect(mSTP,mDTP)(RichTextEditor))
+export default withRouter(connect(mSTP, mDTP)(Editor));
+// export default withRouter(connect(mSTP,mDTP)(RichTextEditor))
