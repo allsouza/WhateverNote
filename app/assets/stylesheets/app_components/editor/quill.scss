@@ -1,0 +1,30 @@
+
+// ------------------------------------------- FONTS ---------------------------------------------------
+
+.ql-editor .ql-font-roboto{
+    font-family: "Roboto";
+  }
+
+  .ql-snow .ql-picker.ql-font .ql-picker-label[data-value=roboto]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=roboto]::before {
+  content: 'Roboto';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=roboto]::before {
+    font-family: "Roboto";
+  }
+
+  .ql-editor .ql-font-coming-soon{
+    font-family: 'Coming Soon', cursive;
+  }
+
+  .ql-snow .ql-picker.ql-font .ql-picker-label[data-value=coming-soon]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=coming-soon]::before {
+  content: 'Coming Soon';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=coming-soon]::before {
+    font-family: 'Coming Soon', cursive;
+  }
+
+//   --------------------------------------------------------------------------------------------------------------

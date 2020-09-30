@@ -68,7 +68,6 @@ export default class NotesIndex extends React.Component{
     render(){
         const path = this.props.location.pathname.split('/');
         const id = path[path.length-1];
-        // debugger
         return(<>
             {this.state.ready ? 
             <div className="main-app">

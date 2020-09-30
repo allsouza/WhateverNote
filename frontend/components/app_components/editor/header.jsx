@@ -3,7 +3,7 @@ import React from 'react';
 export default class Header extends React.Component{
     constructor(props){
         super(props);
-        this.state = {notebooks: this.props.notebooks, options: false};
+        this.state = {notebooks: this.props.notebooks, options: false, ready: false};
         this._handleOptionsBlur = this._handleOptionsBlur.bind(this);
         this._handleOptionsClick = this._handleOptionsClick.bind(this);
         this.redirect = this.redirect.bind(this);
@@ -14,6 +14,7 @@ export default class Header extends React.Component{
             let notebooks = {};
             payload.notebooks.forEach(notebook =>  notebooks[notebook.id] = notebook)
             this.setState({notebooks});
+            this.setState({ready: true})
         })
     }
 
@@ -43,8 +44,8 @@ export default class Header extends React.Component{
     render(){
         const {note} = this.props;
         const notebook = Object.keys(this.state.notebooks).length > 0 ? this.state.notebooks[note.notebook_id] : {name:""};
-        return(
-            <div className="header">
+        return(<>
+            {this.state.ready ? <div className="header">
             <div id='first-header'>
                 <div className="left">
                     <button 
@@ -112,7 +113,7 @@ export default class Header extends React.Component{
                     <img src={window.editing} alt=""/>
                 </nav>
             </div>
-        </div>
+        </div> : null} </>
         )
     }
 }

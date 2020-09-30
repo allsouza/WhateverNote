@@ -19,7 +19,8 @@ export default class Editor extends React.Component{
     
     componentDidUpdate(prevProps, prevState){
         if(this.props.type === 'standard' && this.props.selectFirst){
-            document.getElementsByClassName('note-item')[0].classList.add('selected');
+            const items = document.getElementsByClassName('note-item')
+            if(Array.from(items).length > 0) items[0].classList.add('selected');
         }
 
         if(prevProps.location.pathname !== this.props.location.pathname){
