@@ -27,6 +27,9 @@ export default class MoveNote extends React.Component{
 
     save(){
         this.props.updateNote(this.state)
+        if(this.props.location.pathname.split('/')[2] !== "notes") {
+            this.props.history.push(`/app/notebooks/${this.state.notebook_id}/notes/${this.state.id}`)
+        }
         this.props.closeModal();
     }
 

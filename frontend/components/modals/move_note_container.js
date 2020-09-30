@@ -2,6 +2,7 @@ import { connect } from "react-redux"
 import {updateNote} from '../../actions/note_actions';
 import {closeModal} from '../../actions/modal_actions';
 import MoveNote from './move_note';
+import { withRouter } from "react-router-dom";
 
 const mSTP = (state, ownProps) => ({
     notebooks: state.entities.notebooks,
@@ -13,4 +14,4 @@ const mDTP = dispatch => ({
     closeModal: () => dispatch(closeModal())
 })
 
-export default connect(mSTP, mDTP)(MoveNote)
+export default withRouter(connect(mSTP, mDTP)(MoveNote));
