@@ -46,6 +46,9 @@ function formatDate(date){
 }
 
 function sample(text){
+    const div = document.createElement('div');
+    div.innerHTML = text;
+    text = div.textContent;
     if(text.length < 80){
         return text
     }

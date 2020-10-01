@@ -42,7 +42,8 @@ export default class Header extends React.Component{
     }
 
     render(){
-        const {note} = this.props;
+        const note = this.props.note;
+        debugger
         const notebook = Object.keys(this.state.notebooks).length > 0 ? this.state.notebooks[note.notebook_id] : {name:""};
         return(<>
             {this.state.ready ? <div className="header">
@@ -52,7 +53,6 @@ export default class Header extends React.Component{
                         className="size-toggle show"
                         onClick={this.sizeToggle}
                         ><i className="fas fa-expand-alt"></i>
-
                         <div className='center description'>
                         <div className="arrow"></div>
                         Expand editor</div>

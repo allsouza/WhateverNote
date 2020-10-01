@@ -15,25 +15,22 @@ export default class RichTextEditor extends React.Component{
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.save = this.save.bind(this);
-    }
-
-    componentWillUnmount(){
-        this.hideToolbar();
+        this.deleteNote = this.deleteNote.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log("editor is running")
         if(this.props.type === 'standard' && this.props.selectFirst){
             const items = document.getElementsByClassName('note-item')
             if(Array.from(items).length > 0) items[0].classList.add('selected');
         }
-
+        
         if(prevProps.location.pathname !== this.props.location.pathname){
             if (typeof this.props.note !== 'undefined'){
                 Object.keys(this.props.note).forEach(key=>{
                     this.setState({[key]:this.props.note[key]})
                 })
                 this.setState({noteIds: this.props.noteIds})
+                this.hideToolbar();
             }
         }
     }
@@ -92,8 +89,8 @@ export default class RichTextEditor extends React.Component{
     }
 
     render(){
-        return(
-            <div className="rich-text-editor" >
+        return(<>
+            {this.props.note ? <div className="rich-text-editor" >
                     <HeaderContainer 
                         deleteNote={this.deleteNote} 
                         note={this.props.note} />
@@ -103,7 +100,8 @@ export default class RichTextEditor extends React.Component{
                 </div>
                 <form>
                     <input  type="text" className="title" 
-                            value={this.state.title} 
+                            value={this.state.title === "Untitled" ? "" : this.state.title} 
+                            placeholder="Title"
                             onChange={this.handleChange} 
                             onFocus={this.hideToolbar}
                             onBlur={this.save}
@@ -115,10 +113,11 @@ export default class RichTextEditor extends React.Component{
                                 theme="snow"
                                 modules={modules}
                                 formats={formats}
+                                placeholder="Start writing your note"
                     />
                 </form>
                 <Footer status={this.state.status} />
-            </div>
+            </div> : null} </>
         )
     }
 }

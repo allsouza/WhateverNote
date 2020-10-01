@@ -43,7 +43,7 @@ export default class Header extends React.Component{
 
     render(){
         const {note} = this.props;
-        const notebook = Object.keys(this.state.notebooks).length > 0 ? this.state.notebooks[note.notebook_id] : {name:""};
+        const notebook = this.props.note && Object.keys(this.state.notebooks).length > 0 ? this.state.notebooks[note.notebook_id] : {name:""};
         return(<>
             {this.state.ready ? <div className="header">
             <div id='first-header'>
