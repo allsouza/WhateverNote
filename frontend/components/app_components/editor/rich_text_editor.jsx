@@ -125,6 +125,7 @@ export default class RichTextEditor extends React.Component{
                                 theme="snow"
                                 modules={modules}
                                 formats={formats}
+                                bounds={'.rich-text-editor'}
                                 placeholder="Start writing your note"
                     />
                 </form>
