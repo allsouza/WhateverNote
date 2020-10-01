@@ -1,4 +1,5 @@
 import {RECEIVE_ALL_NOTEBOOKS, REMOVE_NOTEBOOK, RECEIVE_NOTEBOOK} from '../actions/notebook_actions';
+import {LOGOUT_CURRENT_USER} from '../actions/user_actions';
 
 export default function notebooksReducer(state={}, action){
     Object.freeze(state);
@@ -29,6 +30,8 @@ export default function notebooksReducer(state={}, action){
             newState = Object.assign({}, state);
             delete newState[action.notebookId];
             return newState; 
+        case LOGOUT_CURRENT_USER:
+            return {};
         default:
           return state;
     }

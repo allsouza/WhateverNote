@@ -1,5 +1,6 @@
 .notes-index{
-    display: block;
+    display: flex;
+    flex-direction: column;
     min-width: 330px;
     max-width: 330px;
     background-color: $lightest-blue;

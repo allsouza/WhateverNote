@@ -2,12 +2,14 @@ import React from 'react';
 import NoteIndexItem from './notes_index_item';
 import EditorContainer from '../editor/editor_container';
 import {sortByLastUptade} from './notes_index_container';
+import NoNotesSplash from './no_notes_splash';
 
 export default class NotesIndex extends React.Component{
     constructor(props){
         super(props);
         this.openNote = this.openNote.bind(this);
         this.state = {editor: false, ready:false, selectFirst: false}
+        this.createNote = this.createNote.bind(this);
     }
 
     componentDidMount(){
@@ -15,7 +17,7 @@ export default class NotesIndex extends React.Component{
             this.props.fetchNotes().then((payload)=>{
                 const notes = payload.notes.sort(sortByLastUptade);
                 this.props.history.push(`/app/notes/${notes[0].id}`);
-                this.setState({editor: true, ready: true})
+                this.setState({editor: true})
                 }
             )
         }
@@ -23,10 +25,10 @@ export default class NotesIndex extends React.Component{
             this.props.fetchNotebook(this.props.match.params.notebook_id).then((payload) => {
                 const notes = payload.notebook.notes.sort(sortByLastUptade);
                 if(notes.length > 0) this.props.history.push(`/app/notebooks/${payload.notebook.id}/notes/${notes[0].id}`);
-                this.setState({editor: true, ready: true})
+                this.setState({editor: true})
             })
         }
-        this.setState({selectFirst: true})
+        this.setState({selectFirst: true, ready: true})
     }
 
     componentDidUpdate(prevProps){
@@ -52,7 +54,7 @@ export default class NotesIndex extends React.Component{
 
             // Select first note if it has just been created
             const time = new Date(this.props.notes[0].created_at);
-            if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname){
+            if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname  && Array.from(document.getElementsByClassName('note-list')).length > 0){
                 const items = document.getElementById('note-list').childNodes;
                 items.forEach(item=>{
                     item.classList.remove('selected');
@@ -71,10 +73,25 @@ export default class NotesIndex extends React.Component{
         e.currentTarget.classList.add('selected');
     }
 
+    createNote(){
+        let notebook_id, route;
+        let path = this.props.location.pathname.split('/');
+        if(path[2] === 'notebooks'){
+            notebook_id = path[3];
+            route = `/app/notebooks/${notebook_id}/notes`;
+        }
+        else{
+            notebook_id = this.props.user.default_notebook;
+            route = `/app/notes`
+        }
+        this.props.createNote({title: "Untitled", body: "", notebook_id: notebook_id, author_id:this.props.user.id}).then(payload=>{
+            this.props.history.push(`${route}/${payload.note.id}`)
+        })
+    }
+
     render(){
         const path = this.props.location.pathname.split('/');
         const id = path[path.length-1];
-        console.log(this.state.editor);
         return(<>
             {this.state.ready ? 
             <div className="main-app">
@@ -83,8 +100,10 @@ export default class NotesIndex extends React.Component{
                         <h1>{this.props.title}</h1>
                         <p>{this.props.notes.length} notes</p>
                     </div>
-                    
-                    <ul id="note-list">{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul>
+                    {this.props.notes.length > 0 ?
+                        <ul id="note-list">{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul> :
+                        <NoNotesSplash createNote={this.createNote} />                    
+                    }
                 </div>
                 {this.state.editor ? <EditorContainer id={id} selectFirst={this.state.selectFirst} notes={this.props.notes}/> : null}
             </div>

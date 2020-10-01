@@ -1,5 +1,6 @@
 import { RECEIVE_ALL_NOTEBOOKS, RECEIVE_NOTEBOOK } from '../actions/notebook_actions';
 import {RECEIVE_ALL_NOTES, RECEIVE_NOTE, REMOVE_NOTE} from '../actions/note_actions';
+import {LOGOUT_CURRENT_USER} from '../actions/user_actions';
 
 export default function notesReducer(state={}, action){
     Object.freeze(state);
@@ -19,7 +20,9 @@ export default function notesReducer(state={}, action){
         case REMOVE_NOTE:
             newState = Object.assign({}, state);
             delete newState[action.noteId];
-            return newState;    
+            return newState;  
+        case LOGOUT_CURRENT_USER:
+            return {};  
         default:
             return state;
     }
