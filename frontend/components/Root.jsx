@@ -5,7 +5,7 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import Splash from './Splash';
 import Auth from './auth/auth';
 import App from './App';
-import RichTextEditor from "./app_components/editor/rich_text_editor";
+import Loading from "./loading";
 
 export default function Root({store}){
     return(
@@ -14,7 +14,7 @@ export default function Root({store}){
                 <Route exact path='/' component={Splash} />
                 <AuthRoute path="/auth" component={Auth} /> 
                 <ProtectedRoute path='/app' component={App} />
-                <Route exact path="/editor" component={RichTextEditor} />
+                <Route exact path="/loading" component={Loading} />
             </HashRouter>
         </Provider>
     )

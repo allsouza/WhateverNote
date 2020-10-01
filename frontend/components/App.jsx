@@ -7,8 +7,9 @@ import NotebooksIndexContainer from './app_components/notebooks_index/notebooks_
 import NotebookNotesIndexContainer from './app_components/notes_index/notebook_notes_index_container';
 import { Switch } from 'react-router-dom';
 import EditorOnlyContainer from './app_components/editor/editor_only_container';
+import Loading from './loading';
 
-export default function App(){
+function App(){
     return(
         <div className="app">
             <Modal />
@@ -21,4 +22,24 @@ export default function App(){
             </Switch>
         </div>
     )
+}
+
+export default class Apps extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {loading: true}
+    }
+
+    componentDidMount(){
+        setTimeout(() => {this.setState({loading: false})
+        }, 1500); 
+    }
+
+    render(){
+        return(<>
+            { this.state.loading ?
+                <Loading /> : <App/>
+            }</>
+        )
+    }
 }
