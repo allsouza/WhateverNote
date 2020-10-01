@@ -31,6 +31,7 @@ export default class RichTextEditor extends React.Component{
                 })
                 this.setState({noteIds: this.props.noteIds})
                 this.hideToolbar();
+                console.log(this.state.notebook_id)
             }
         }
     }
@@ -47,6 +48,8 @@ export default class RichTextEditor extends React.Component{
     }
 
     save(){
+        // debugger
+        this.setState({notebook_id: this.props.note.notebook_id})
         if(this.state.title === ''){
             this.setState({title: "Untitled"})
         }

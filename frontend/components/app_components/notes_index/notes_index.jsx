@@ -44,7 +44,8 @@ export default class NotesIndex extends React.Component{
                 else{
                     this.setState({selectFirst: false})
                 }
-                if(prev.length > 3 && prev[2] !== this.props.location.pathname.split('/')[3]){
+                if(prev.length > 3 && prev[2] !== this.props.location.pathname.split('/')[3] && this.props.location.pathname.split('/').length !== 6){
+                    // debugger
                     this.props.history.push(`${this.props.location.pathname}/${this.props.notes[0].id}`);
                 }
             }
