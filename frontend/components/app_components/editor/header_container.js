@@ -1,5 +1,4 @@
 import { connect } from "react-redux"
-import Header from "./header"
 import {fetchNotebooks} from '../../../actions/notebook_actions';
 import { withRouter } from "react-router-dom";
 const { openModal } = require("../../../actions/modal_actions");

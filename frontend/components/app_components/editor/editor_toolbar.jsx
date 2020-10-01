@@ -6,11 +6,10 @@ const Font = Quill.import("formats/font");
 Font.whitelist = [
     "lato",
     "open-sans",
-    "arial",
-    "helvetica",
-    "lucida",
     "roboto",
-    "coming-soon"
+    "amatic",
+    "caveat",
+    "libre"
 ];
 Quill.register(Font, true);
 
@@ -44,11 +43,10 @@ export const MyToolbar = () => (
             <select className="ql-font" defaultValue="open-sans">
                 <option value="open-sans">Open Sans</option>
                 <option value="lato">Lato</option>
-                <option value="arial">Arial</option>
-                <option value="helvetica">Helvetica</option>
-                <option value="lucida">Lucida</option>
                 <option value="roboto">Roboto</option>
-                <option value="coming-soon">Coming Soon</option>
+                <option value="amatic">Amatic</option>
+                <option value="caveat">Caveat</option>
+                <option value="libre">Libre</option>
             </select>
 
             <select className="ql-size" defaultValue="normal">

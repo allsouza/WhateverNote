@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import Editor from './editor';
 import {fetchNote, updateNote, deleteNote} from '../../../actions/note_actions';
 import { withRouter } from "react-router-dom";
 import { openModal } from "../../../actions/modal_actions";

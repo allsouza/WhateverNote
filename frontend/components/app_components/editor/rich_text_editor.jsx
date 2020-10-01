@@ -11,10 +11,12 @@ export default class RichTextEditor extends React.Component{
         this.state= Object.assign({}, this.props.note,{
             noteIds: props.noteIds,
             status: "All changes saved",
+            autoSave: false
         })
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.save = this.save.bind(this);
+        this.startAutoSave = this.startAutoSave.bind(this);
         this.deleteNote = this.deleteNote.bind(this);
     }
 
@@ -38,9 +40,15 @@ export default class RichTextEditor extends React.Component{
 
     handleBodyChange(body){
         this.setState({body})
-        this.setState({status: "Saving..."})
-        clearTimeout(this.timeout)
-        this.timeout = setTimeout(this.save, 1000)
+        if(this.state.autoSave){
+            this.setState({status: "Saving..."})
+            clearTimeout(this.timeout)
+            this.timeout = setTimeout(this.save, 1000)
+        }
+    }
+
+    startAutoSave(){
+        this.setState({autoSave: true})
     }
 
     handleChange(e){
@@ -48,7 +56,6 @@ export default class RichTextEditor extends React.Component{
     }
 
     save(){
-        // debugger
         this.setState({notebook_id: this.props.note.notebook_id})
         if(this.state.title === ''){
             this.setState({title: "Untitled"})
@@ -111,8 +118,10 @@ export default class RichTextEditor extends React.Component{
                             />
                     <ReactQuill value={this.state.body}
                                 onChange={this.handleBodyChange}
-                                onFocus={this.showToolbar}
-                                onBlur={this.save}
+                                onFocus={() => {
+                                    this.showToolbar()
+                                    this.startAutoSave()}}
+                                onBlur={() => this.setState({autoSave: false})}
                                 theme="snow"
                                 modules={modules}
                                 formats={formats}

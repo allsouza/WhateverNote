@@ -14,17 +14,49 @@
     font-family: "Roboto";
   }
 
-  .ql-editor .ql-font-coming-soon{
-    font-family: 'Coming Soon', cursive;
+  // --------------------------------------------------
+
+  .ql-editor .ql-font-amatic{
+    font-family: 'Amatic SC', cursive;
   }
 
-  .ql-snow .ql-picker.ql-font .ql-picker-label[data-value=coming-soon]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=coming-soon]::before {
-  content: 'Coming Soon';
+  .ql-snow .ql-picker.ql-font .ql-picker-label[data-value=amatic]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=amatic]::before {
+  content: 'Amatic';
 }
 
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=coming-soon]::before {
-    font-family: 'Coming Soon', cursive;
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=amatic]::before {
+    font-family: 'Amatic SC', cursive;
   }
+
+// --------------------------------------------------
+
+    .ql-editor .ql-font-caveat{
+      font-family: 'Caveat', cursive;
+    }
+  
+    .ql-snow .ql-picker.ql-font .ql-picker-label[data-value=caveat]::before,
+  .ql-snow .ql-picker.ql-font .ql-picker-item[data-value=caveat]::before {
+    content: 'Caveat';
+  }
+  
+  .ql-snow .ql-picker.ql-font .ql-picker-item[data-value=caveat]::before {
+      font-family: 'Caveat', cursive;
+    }
+
+// --------------------------------------------------
+
+.ql-editor .ql-font-libre{
+  font-family: 'Libre Baskerville', serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=libre]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=libre]::before {
+content: 'Libre';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=libre]::before {
+  font-family: 'Libre Baskerville', serif;
+}
 
 //   --------------------------------------------------------------------------------------------------------------
