@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
+        @user.user_icon ||= "crush"
         if @user.save
             login!(@user)
             notebook = Notebook.create!(name: "My Notebook", author_id: @user.id)
