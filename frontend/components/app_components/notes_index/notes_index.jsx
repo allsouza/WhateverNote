@@ -10,6 +10,13 @@ export default class NotesIndex extends React.Component{
         this.openNote = this.openNote.bind(this);
         this.state = {editor: false, ready:false, selectFirst: false}
         this.createNote = this.createNote.bind(this);
+        this.refresh = setInterval(() => {
+            this.setState({refresh: "refresh"})
+        }, 10000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.refresh);
     }
 
     componentDidMount(){
