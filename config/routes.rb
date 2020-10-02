@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   root to: "static_pages#root"
   namespace :api, default:{format: :json} do
-    resources :users, only: %i(create)
+    resources :users, only: %i(create update)
     resource :session, only: %i(create destroy)
     resources :notes
     resources :notebooks do

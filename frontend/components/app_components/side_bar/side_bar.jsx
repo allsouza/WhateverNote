@@ -105,7 +105,7 @@ export default class Sidebar extends React.Component{
                     <p>{`${user.first_name} ${user.last_name}`}<i className="fas fa-angle-down"></i></p>
                 </div>
 
-                <UserDropdown user={user} logout={this.props.logout}/>
+                <UserDropdown user={user} logout={this.props.logout} openModal={this.props.openModal}/>
                 
                 <button onClick={this._createNote}><i className="fas fa-plus"></i>New Note</button>
 

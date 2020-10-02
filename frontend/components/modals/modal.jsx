@@ -6,6 +6,7 @@ import NoteInfo from './note_info_container';
 import NewNotebookContainer from '../modals/new_notebook_container';
 import RenameNotebookContainer from '../modals/rename_notebook_container';
 import MoveNoteContainer from './move_note_container';
+import SettingsContainer from './settings_container';
 
 function Modal({modal, closeModal, info}){
 
@@ -24,6 +25,9 @@ function Modal({modal, closeModal, info}){
             break;
         case 'moveNotebook':
             component=<MoveNoteContainer info={info}/>
+            break;
+        case 'settings':
+            component=<SettingsContainer />
             break;
         default:
             return null;
