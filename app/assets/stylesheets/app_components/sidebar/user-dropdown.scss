@@ -46,8 +46,13 @@
                 background-color: inherit;
                 transition: inherit;
             }
+
         }
-    
+        
+        #settings{
+            height: 38px;
+        }
+        
         li:last-of-type{
             border-bottom: none;
         }
