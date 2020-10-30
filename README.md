@@ -70,9 +70,3 @@ By implementing React-Quill notes have a Rich-Text format which allows for many 
 ![alt text](https://github.com/allsouza/WhateverNote/blob/master/app/assets/images/read_me/adding-video.gif "Adding videos")
 
 ---
-## Coming in the Future
-
-* Notes index selection based on url
-* Adding tags to notes
-* Searches
-* Reminders
