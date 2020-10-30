@@ -33,7 +33,6 @@ export default class RichTextEditor extends React.Component{
                 })
                 this.setState({noteIds: this.props.noteIds})
                 this.hideToolbar();
-                console.log(this.state.notebook_id)
             }
         }
     }
@@ -79,14 +78,12 @@ export default class RichTextEditor extends React.Component{
     }
 
     showToolbar(){
-        console.log("showing toolbar")
         const eles = document.getElementsByClassName('toolbar-field')[0].childNodes;
         eles[0].classList.remove('active');
         eles[1].classList.add('active');
     }
 
     hideToolbar(){
-        console.log("hiding toolbar")
         const eles = document.getElementsByClassName('toolbar-field')[0].childNodes;
         eles[1].classList.remove('active');
         eles[0].classList.add('active');

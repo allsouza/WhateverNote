@@ -2,6 +2,14 @@
 <html>
   <head>
     <title>WhateverNote</title>
+      <meta property="og:title" content="WhateverNote" />
+      <meta property='og:image' content="<%= image_url('whatevernote.gif') %>"/>
+      <meta property="og:description"
+        content="WhateverNote is a clone of the note keeping web-app Evernote. It allows users to create notes with Rich Text Content and save them in different notebooks."
+      />
+      <meta property="og:url"
+        content="https://whatever-note.herokuapp.com/"
+      />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag asset_path('logo.png') %>
