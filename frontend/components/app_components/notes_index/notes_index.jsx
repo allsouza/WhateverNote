@@ -40,7 +40,6 @@ export default class NotesIndex extends React.Component{
 
     componentDidUpdate(prevProps){
         if(this.props.notes.length > 0){
-            // debugger
             if(!this.state.editor){
                 this.setState({editor: true})
             } 
@@ -54,20 +53,26 @@ export default class NotesIndex extends React.Component{
                     this.setState({selectFirst: false})
                 }
                 if(prev.length > 3 && prev[2] !== this.props.location.pathname.split('/')[3] && this.props.location.pathname.split('/').length !== 6){
-                    // debugger
                     this.props.history.push(`${this.props.location.pathname}/${this.props.notes[0].id}`);
                 }
             }
 
-            // Select first note if it has just been created
-            const time = new Date(this.props.notes[0].created_at);
-            if((new Date()-time) < 1000 && prevProps.location.pathname === this.props.location.pathname  && Array.from(document.getElementsByClassName('note-list')).length > 0){
-                const items = document.getElementById('note-list').childNodes;
-                items.forEach(item=>{
-                    item.classList.remove('selected');
-                })
-                items[0].classList.add('selected');
-            }
+            this.selectItem()  
+        }
+    }
+
+    selectItem(){
+        const path = this.props.location.pathname.split('/');
+        if(path[path.length-2] === 'notes'){
+            const notes = document.getElementById('note-list').childNodes;
+            notes.forEach(note => {
+                if(note.id === path[path.length-1]){
+                    note.classList.add('selected')
+                }
+                else{
+                    note.classList.remove('selected')
+                }
+            })
         }
     }
 
