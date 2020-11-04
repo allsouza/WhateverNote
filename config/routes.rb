@@ -39,5 +39,6 @@ Rails.application.routes.draw do
     resources :notebooks do
       resources :notes, only: :create
     end
+    resources :tags
   end
 end

@@ -11,6 +11,12 @@ class Note < ApplicationRecord
         foreign_key: :notebook_id,
         class_name: :Notebook
 
+    has_many :taggings
+
+    has_many :tags,
+        through: :taggings,
+        source: :tag
+
     # def ensure_notebook
     #     self.notebook_id ||= current_user
     # end
