@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: notebooks
+# Table name: tags
 #
 #  id         :bigint           not null, primary key
 #  author_id  :integer          not null
@@ -8,11 +8,15 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+class Tag < ApplicationRecord
+    validates :name, presence: true
 
-one:
-  author_id: 1
-  name: MyString
+    belongs_to :user,
+        foreign_key: :author_id
 
-two:
-  author_id: 1
-  name: MyString
+    has_many :taggings
+
+    has_many :notes,
+        through: :taggings,
+        source: :note
+end

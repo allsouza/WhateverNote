@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: notebooks
+# Table name: tags
 #
 #  id         :bigint           not null, primary key
 #  author_id  :integer          not null
@@ -8,11 +8,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+require 'test_helper'
 
-one:
-  author_id: 1
-  name: MyString
-
-two:
-  author_id: 1
-  name: MyString
+class TagTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end

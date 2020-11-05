@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_042759) do
+ActiveRecord::Schema.define(version: 2020_11_04_215745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 2020_09_29_042759) do
     t.index ["title"], name: "index_notes_on_title"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_taggings_on_note_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_tags_on_author_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "session_token", null: false
@@ -50,4 +67,6 @@ ActiveRecord::Schema.define(version: 2020_09_29_042759) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  add_foreign_key "taggings", "notes"
+  add_foreign_key "taggings", "tags"
 end

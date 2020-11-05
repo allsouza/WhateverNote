@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: notebooks
+# Table name: tags
 #
 #  id         :bigint           not null, primary key
 #  author_id  :integer          not null
