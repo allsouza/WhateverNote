@@ -6,14 +6,14 @@ export default function TagSidebar({fetchTags, tags}) {
     const listTags = () => {
         return tags.map(tag => {
             return (<li key={tag.id}>
-                <i className="fas fa-tag"></i> {tag.name}
+                <i className="fas fa-tag"></i>{tag.name}
             </li>)
         })
     }
     
     return(
         <ul className="tags-sidebar">
-            {listTags()}
+            { listTags() }
         </ul>
     )
 }
