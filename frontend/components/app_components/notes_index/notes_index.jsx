@@ -125,7 +125,7 @@ export default class NotesIndex extends React.Component{
                         </div>
                     </div> : null }
                     {this.props.notes.length > 0 ?
-                        <ul id="note-list">{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul> :
+                        <ul id="note-list">{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note} tags={this.props.tags}/>)}</ul> :
                         <NoNotesSplash createNote={this.createNote} />                    
                     }
                 </div>

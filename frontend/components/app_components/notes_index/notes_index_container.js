@@ -14,7 +14,8 @@ const mSTP = (state) => {
     notes: notes.sort(sortByLastUptade),
     title: "All Notes",
     user: state.entities.users[state.session.id],
-    tag: state.ui.filter !== null ? state.entities.tags[state.ui.filter] : null
+    tag: state.ui.filter !== null ? state.entities.tags[state.ui.filter] : null,
+    tags: state.entities.tags
 })}
 
 const mDTP = dispatch => ({
