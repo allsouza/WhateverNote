@@ -65,6 +65,9 @@
             font-family: $body;
             border-bottom: 1px solid $light-gray;
             background-color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             h3{
                 font-size: 16px;
@@ -78,10 +81,28 @@
                 overflow: hidden;
                 background: inherit;
             }
-            .date{
+
+            .note-item-footer{
+                background: transparent;
+                display: flex;
+                align-items: baseline;
                 margin-top: 8px;
-                background: inherit;
-                font-size: 12px;
+                .date{
+                    background: inherit;
+                    font-size: 12px;
+                    padding-right: 10px;
+                }
+
+                ul{
+                    display: flex;
+                    li{
+                        font-size: 10px;
+                        background-color: $light-gray;
+                        height: min-content;
+                        padding: 0px 5px;
+                        border-radius: 50px;
+                    }
+                }
             }
         }
 

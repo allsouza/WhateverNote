@@ -1,11 +1,23 @@
 import React from 'react';
 
-export default function NotesIndexItem({note, openNote}){
+export default function NotesIndexItem({note, openNote, tags}){
+    tags = note.tags.map(tag => tags[tag])
     return(
         <li className="note-item" id={note.id} onClick={e => openNote(e, note.id)}>
             <h3>{note.title}</h3>
             <p className="body">{sample(note.body)}</p>
-            <p className="date">{formatDate(new Date(note.updated_at))}</p>
+            <div className="note-item-footer">
+                <p className="date">{formatDate(new Date(note.updated_at))}</p>
+                <ul>
+                    {tags.map(tag => {
+                        return(
+                            <li key={tag.id}>
+                                {tag.name}
+                            </li>
+                        )
+                    } )}
+                </ul>
+            </div>
         </li>
     )
 }
