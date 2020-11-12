@@ -5,7 +5,7 @@ import UserDropdown from './user-dropdown';
 export default class Sidebar extends React.Component{
     constructor(props){
         super(props);
-        this.state = {expanded: null}
+        this.state = {expanded: new Set()}
         this._displayUserDropdown = this._displayUserDropdown.bind(this);
         this._hideUserDropdown = this._hideUserDropdown.bind(this);
         this._select = this._select.bind(this);
@@ -16,6 +16,8 @@ export default class Sidebar extends React.Component{
 
     componentDidMount(){
         this.dropdown = document.getElementsByClassName('user-dropdown')[0];
+        this.props.fetchTags();
+        this.props.fetchNotes();
     }
 
     componentDidUpdate(){
@@ -76,24 +78,24 @@ export default class Sidebar extends React.Component{
             case "notebooks":
                 this.props.history.push('/app/notebooks')
                 break;
-        
+            case "tags":
+                window.alert("Tag modal")
+                break;        
             default:
+                this.props.clearFilters();
                 if(this.props.location.pathname.split("/")[2] !== 'notes') this.props.history.push(`/app/notes/`)
                 break;
         }
     }
 
     _expand(target){
-        switch (target) {
-            case "notebooks":
-                if (this.state.expanded !== "notebooks"){
-                    this.setState({expanded: "notebooks"})
-                    break;
-                }
-            default:
-                this.setState({expanded:null})
-                break;
+        if (this.state.expanded.has(target)){
+            this.state.expanded.delete(target)
         }
+        else{
+            this.state.expanded.add(target)
+        }
+        this.setState({expanded: this.state.expanded})
     }
 
     render(){

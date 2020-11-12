@@ -39,6 +39,7 @@ export default class NotesIndex extends React.Component{
     }
 
     componentDidUpdate(prevProps){
+        // debugger
         if(this.props.notes.length > 0){
             if(!this.state.editor){
                 this.setState({editor: true})
@@ -54,6 +55,9 @@ export default class NotesIndex extends React.Component{
                 }
                 if(prev.length > 3 && prev[2] !== this.props.location.pathname.split('/')[3] && this.props.location.pathname.split('/').length !== 6){
                     this.props.history.push(`${this.props.location.pathname}/${this.props.notes[0].id}`);
+                }
+                if(this.props.location.pathname === '/app/notes'){
+                    this.props.history.push(`/app/notes/${this.props.notes[0].id}`);
                 }
             }
 
@@ -112,6 +116,14 @@ export default class NotesIndex extends React.Component{
                         <h1>{this.props.title}</h1>
                         <p>{this.props.notes.length} notes</p>
                     </div>
+                    {this.props.tag !== null ? <div className="filter-display">
+                        <div>
+                            <i className="fas fa-tag"></i>
+                            {this.props.tag.name}
+                            <i className="fas fa-times-circle"
+                                onClick={this.props.clearFilter}></i>
+                        </div>
+                    </div> : null }
                     {this.props.notes.length > 0 ?
                         <ul id="note-list">{this.props.notes.map(note=><NoteIndexItem key={note.id} openNote={this.openNote} note={note}/>)}</ul> :
                         <NoNotesSplash createNote={this.createNote} />                    

@@ -11,7 +11,7 @@ export default function Root({store}){
     return(
         <Provider store={store}>
             <HashRouter>
-                <Route exact path='/' component={Splash} />
+                <AuthRoute exact path='/' component={Splash} />
                 <AuthRoute path="/auth" component={Auth} /> 
                 <ProtectedRoute path='/app' component={App} />
                 <Route exact path="/loading" component={Loading} />
