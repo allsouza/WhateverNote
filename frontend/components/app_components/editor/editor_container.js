@@ -5,6 +5,7 @@ import { openModal } from "../../../actions/modal_actions";
 import RichTextEditor from "./rich_text_editor";
 
 const mSTP = (state, ownProps) => {
+    
     return({
         note: state.entities.notes[ownProps.id],
         noteIds: ownProps.notes.map(note=>note.id),

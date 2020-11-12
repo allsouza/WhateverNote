@@ -32,6 +32,30 @@
         }
     }
 
+    .filter-display{
+        height: 50px;
+        display: flex;
+        align-items: center;
+        div{
+            border-radius: 50px;
+            background-color: $dark-blue;
+            color: white;
+            font-size: 13px;
+            font-family: $body;
+            margin-left: 20px;
+            i{
+                color: white;
+                padding: 10px;
+                background: transparent;
+            }
+            i:last-of-type:hover{
+                color: $blue;
+                cursor: pointer;
+            }
+
+        }
+    }
+
     ul{
         background-color: transparent;
         li{

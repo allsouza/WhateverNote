@@ -126,7 +126,7 @@ export default class RichTextEditor extends React.Component{
                                 placeholder="Start writing your note"
                     />
                 </form>
-                <Footer status={this.state.status} />
+                <Footer status={this.state.status} note={this.props.note} />
             </div> : null} </>
         )
     }

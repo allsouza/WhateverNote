@@ -16,6 +16,8 @@ export default class Sidebar extends React.Component{
 
     componentDidMount(){
         this.dropdown = document.getElementsByClassName('user-dropdown')[0];
+        this.props.fetchTags();
+        this.props.fetchNotes();
     }
 
     componentDidUpdate(){

@@ -42,8 +42,7 @@ export default class NotebookIndexItem extends React.Component{
 
     render(){
         const {notebook, notes, users} = this.props;
-        const sortedNotes = Object.values(notes).filter(note => notebook.notes.includes(note.id))
-                        .sort((note1, note2)=>{return note1.updated_at <= note2.updated_at ? 1 : -1})
+        const sortedNotes = notes.sort((note1, note2)=>{return note1.updated_at <= note2.updated_at ? 1 : -1})
         return(
             <>
             <tr>
