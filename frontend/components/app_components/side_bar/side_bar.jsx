@@ -80,6 +80,7 @@ export default class Sidebar extends React.Component{
                 window.alert("Tag modal")
                 break;        
             default:
+                this.props.clearFilters();
                 if(this.props.location.pathname.split("/")[2] !== 'notes') this.props.history.push(`/app/notes/`)
                 break;
         }

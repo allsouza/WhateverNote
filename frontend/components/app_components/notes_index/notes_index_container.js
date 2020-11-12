@@ -8,8 +8,10 @@ export function sortByLastUptade(note1, note2){
 }
 
 const mSTP = (state) => {
+    debugger
+    const notes = state.ui.filter === null ? Object.values(state.entities.notes) : state.entities.tags[state.ui.filter].notes.map(ele => state.entities.notes[ele]);
     return({
-    notes: Object.values(state.entities.notes).sort(sortByLastUptade),
+    notes: notes.sort(sortByLastUptade),
     title: "All Notes",
     user: state.entities.users[state.session.id]
 })}

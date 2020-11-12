@@ -4,6 +4,7 @@ import {logout} from '../../../actions/user_actions';
 import { withRouter } from "react-router-dom";
 import { createNote } from "../../../actions/note_actions";
 import { openModal } from '../../../actions/modal_actions';
+import { clearFilter } from "../../../actions/filter_actions";
 
 const mSTP = state => ({
     user: state.entities.users[state.session.id],
@@ -13,7 +14,8 @@ const mSTP = state => ({
 const mDTP = dispatch => ({
     logout: () => dispatch(logout()),
     createNote: note => dispatch(createNote(note)),
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
+    clearFilters: () => dispatch(clearFilter())
 })
 
 export default withRouter(connect(mSTP, mDTP)(SideBar));
