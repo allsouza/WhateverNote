@@ -12,7 +12,9 @@ const mSTP = (state, ownProps) => {
             notes: notes,
             notebook: state.entities.notebooks[ownProps.match.params.notebook_id],
             title: state.entities.notebooks[ownProps.match.params.notebook_id].name,
-            user: state.entities.users[state.session.id]
+            user: state.entities.users[state.session.id],
+            tag: state.ui.filter !== null ? state.entities.tags[state.ui.filter] : null,
+            tags: state.entities.tags
         })
     }
     else{
