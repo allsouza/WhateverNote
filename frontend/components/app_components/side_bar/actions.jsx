@@ -20,7 +20,11 @@ export default function Actions({expand, select, expanded, selectByPath}){
                     <NotebooksSidebar select={selectByPath}/> 
                 </li>: null} 
 
-                <li onClick={select} id="tags" className="action">
+                <li onClick={e => {
+                                e.stopPropagation()
+                                select(e)}} 
+                    id="tags" 
+                    className="action">
                     <i onClick={ e =>{  toggleCaret(e.currentTarget);
                                         e.stopPropagation();
                                         expand("tags")} }

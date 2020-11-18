@@ -79,7 +79,7 @@ export default class Sidebar extends React.Component{
                 this.props.history.push('/app/notebooks')
                 break;
             case "tags":
-                window.alert("Tag modal")
+                this.props.openModal('tags')
                 break;        
             default:
                 this.props.clearFilters();
@@ -101,7 +101,7 @@ export default class Sidebar extends React.Component{
     render(){
         const {user} = this.props;
         return(
-            <div className="side-bar">
+            <div className="side-bar" onClick={this.props.closeModal}>
                 <div onClick={this._displayUserDropdown} className='user'>
                     <img src={window[user.user_icon]} alt=""/>
                     <p>{`${user.first_name} ${user.last_name}`}<i className="fas fa-angle-down"></i></p>

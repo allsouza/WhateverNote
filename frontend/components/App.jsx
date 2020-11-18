@@ -8,12 +8,14 @@ import NotebookNotesIndexContainer from './app_components/notes_index/notebook_n
 import { Switch } from 'react-router-dom';
 import EditorOnlyContainer from './app_components/editor/editor_only_container';
 import Loading from './loading';
+import Tag from './app_components/tags/tags_container';
 
 function App(){
     return(
         <div className="app">
             <Modal />
             <SidebarContainer/>
+            <Tag />
             <Switch>
                 <ProtectedRoute path='/app/notes' component={NotesIndexContainer} />
                 <ProtectedRoute path='/app/notebooks/:notebook_id/notes' component={NotebookNotesIndexContainer} />

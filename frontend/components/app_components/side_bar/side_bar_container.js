@@ -3,7 +3,7 @@ import SideBar from './side_bar';
 import {logout} from '../../../actions/user_actions';
 import { withRouter } from "react-router-dom";
 import { createNote, fetchNotes } from "../../../actions/note_actions";
-import { openModal } from '../../../actions/modal_actions';
+import { closeModal, openModal } from '../../../actions/modal_actions';
 import { clearFilter } from "../../../actions/filter_actions";
 import { fetchTags } from "../../../actions/tag_actions";
 
@@ -18,7 +18,8 @@ const mDTP = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
     clearFilters: () => dispatch(clearFilter()),
     fetchTags: () => dispatch(fetchTags()),
-    fetchNotes: () => dispatch(fetchNotes())
+    fetchNotes: () => dispatch(fetchNotes()),
+    closeModal: () => dispatch(closeModal())
 })
 
 export default withRouter(connect(mSTP, mDTP)(SideBar));
