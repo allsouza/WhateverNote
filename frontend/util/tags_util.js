@@ -37,7 +37,7 @@ export const addTag = (tagId, noteId) => {
     return $.ajax({
         method: "POST",
         url: `/api/taggings`,
-        data: {tag_id: tagId, note_id: noteId}
+        data: {tagging:{tag_id: tagId, note_id: noteId}}
     })
 }
 

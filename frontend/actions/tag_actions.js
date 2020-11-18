@@ -24,7 +24,7 @@ export const fetchTags = () => dispatch => {
 }
 
 export const fetchTag = id => dispatch => {
-    TagApiUtil.fetchTag(id).then( tag => dispatch(receiveTag(tags)))
+    TagApiUtil.fetchTag(id).then( tag => dispatch(receiveTag(tag)))
 }
 
 export const destroyTag = id => dispatch => {
@@ -39,9 +39,12 @@ export const updateTag = tag => dispatch => {
     TagApiUtil.updateTag(tag).then( tag => dispatch(receiveTag(tag)))
 }
 
-export const addTag = (tagId, noteId) => {
-    TagApiUtil.addTag(tagId, noteId).then( () => fetchTag(tagId))
+export const addTag = (tagId, noteId) => dispatch => {
+    TagApiUtil.addTag(tagId, noteId).then( () => {
+        TagApiUtil.fetchTag(tagId).then( tag => dispatch(receiveTag(tag)))
+    })
 }
+
 
 export const removeTag = (tagId, noteId) => {
     TagApiUtil.removeTag(tagId, noteId).then( () => fetchTag(tagId))

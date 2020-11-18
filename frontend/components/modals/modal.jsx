@@ -7,6 +7,8 @@ import NewNotebookContainer from '../modals/new_notebook_container';
 import RenameNotebookContainer from '../modals/rename_notebook_container';
 import MoveNoteContainer from './move_note_container';
 import SettingsContainer from './settings_container';
+import NewTagContainer from './new_tag_container';
+import EditTagContainer from './edit_tag_container';
 
 function Modal({modal, closeModal, info}){
 
@@ -28,6 +30,12 @@ function Modal({modal, closeModal, info}){
             break;
         case 'settings':
             component=<SettingsContainer />
+            break;
+        case 'newTag':
+            component=<NewTagContainer />
+            break;
+        case 'editTag':
+            component=<EditTagContainer tag={info} />
             break;
         default:
             return null;
